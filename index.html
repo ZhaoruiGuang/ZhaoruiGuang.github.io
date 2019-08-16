@@ -616,7 +616,7 @@
 			<p class="electricBigTitle bigTitleWord alineCenter titlesTransformDefault">省电模式，提高浏览器的续航力。</p>
 			<p class="electricMidTitle midTitleWord alineCenter titlesTransformDefault">跟随MacOS Mojave系统智能切换，并配有多款内置精美皮肤。高颜值，更加独特。</p>
 			<div class="electricVideoBox">
-				<video width="520" height="520" class="video" id="video" src="http://s7.qhres.com/static/a59d727d578c757e.mp4" preload>
+				<video width="520" height="520" class="video" id="video" src="http://s7.qhres.com/static/a59d727d578c757e.mp4" preload muted>
 					当前浏览器不支持 video 直接播放
 				</video>
 				<div class="paramBox inlineBlock fr">
@@ -731,7 +731,7 @@
 					setTimeout(function(){
 						$('.powerfulMidTitle').addClass('titlesTransformActive');
 					},200);
-					// mySwiper.autoplay.start();
+					mySwiper.autoplay.start();
 				};
 				if(scrollTop >= 4700 && scrollTop <= 5700 && !$('.mojaveBigTitle').hasClass('titlesTransformActive')){
 					$('.mojaveBigTitle').addClass('titlesTransformActive');
