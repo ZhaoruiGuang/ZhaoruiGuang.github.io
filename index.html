@@ -1,37 +1,833 @@
-<!-- <!doctype html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
-    <title>基本地图展示</title>
-    <link rel="stylesheet" href="https://cache.amap.com/lbs/static/main1119.css"/>
-    <script src="https://cache.amap.com/lbs/static/es5.min.js"></script>
-    <script src="https://webapi.amap.com/maps?v=1.4.8&key=1c5d583e35c7b2d2ee30855ad10d0664"></script>
-    <script type="text/javascript" src="https://cache.amap.com/lbs/static/addToolbar.js"></script>
-</head>
-<body>
-<div id="container"></div>
-
-<script>
-    var map = new AMap.Map('container', {
-        resizeEnable: true,
-        zoom:11,
-        center: [116.397428, 39.90923]
-    });
-
-</script>
-</body>
-</html> -->
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>今日优选</title>
-</head>
-<body>
-  <div id="root"></div>
-  <script type="text/javascript" src="https://s4.ssl.qhres.com/static/3fb8a39236ea5eee.js"></script>
-  <script src="https://static.mediav.com/js/richmedia/dist/mini_richmedia.min.js"></script>
-<script type="text/javascript" src="https://s1.ssl.qhres.com/static/abd905a307d477eb.js"></script></body>
+<html>
+	<head>
+		<title>360极速浏览器</title>
+		<meta charset="UTF-8" />
+		<meta name="renderer" content="webkit">
+		<meta name="description" content="360极速浏览器" />
+		<meta name="keywords" content="360,浏览器,极速浏览器" />
+		<script type="text/javascript">
+		  var isMac = /Macintosh.* Mac OS X.*/i.test(navigator.userAgent);
+		  if (isMac && location.protocol == 'http:') {
+		    location.href = location.href.replace(/^http:/, 'https:');
+		  }
+		</script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/css/swiper.min.css">
+		<style type="text/css">
+			html,body {
+				width: 100%;
+				min-height: 100%;
+				min-width:1200px;
+				margin:0;
+				padding:0;
+				font-family:"Microsoft YaHei","微软雅黑",Helvetica,Arial,sans-serif;
+				background-color: #000;
+			}
+			a,p,div,ul,li,h1,h2,h3,h4,h5,h6{
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+			a{
+				text-decoration: none;
+			}
+			.fl{
+				float: left;
+			}
+			.fr{
+				float: right;
+			}
+			.clearfix{
+				clear: both;
+			}
+			.inlineBlock{
+				display: inline-block;
+			}
+			.block{
+				display: block;
+			}
+			.screenBox{
+				height: 1080px;
+			}
+			.alineCenter{
+				text-align: center;
+			}
+			.overHidden{
+				overflow: hidden;
+			}
+			.bigTitleWord{
+				font-size: 64px;
+				font-weight: 600;
+				line-height:90px;
+				color:rgba(255,255,255,1);
+			}
+			.midTitleWord{
+				display: block;
+				width: 1000px;
+				margin: 20px auto 0;
+				font-size: 20px;
+				line-height:28px;
+				color:rgba(255,255,255,1);
+			}
+			.titlesTransformDefault{
+				opacity: 0;
+				position: relative;
+				top:60px;
+			}
+			.titlesTransformActive{
+				opacity: 1;
+				top:0;
+				transition: opacity 1s, top 1s;
+			}
+			
+			.header {
+				position:fixed;
+				z-index: 9;
+				top:0;
+				left: 0;
+				height:48px;
+				width:100%;
+			}
+			.menus{
+				width:1200px;
+				height: 100%;
+				margin:0 auto;
+			}
+			.logo{
+				height: 28px;
+				margin-top: 10px;
+				font-size:16px;
+				color:rgba(255,255,255,1);
+				line-height: 28px;
+				font-weight: normal;
+			}
+			.logo img{
+				width: 28px;
+				height: 28px;
+				margin-right: 8px;
+			}
+			.links{
+				color:rgba(164,164,164,1);
+				font-size: 14px;
+				line-height: 20px;
+				margin:14px 0 0 40px;
+			}
+			.links:hover{
+				color: #fff;
+			}
+			.downloadNow{
+				width:86px;
+				height:28px;
+				background:linear-gradient(180deg,rgba(64,159,236,1) 0%,rgba(0,119,204,1) 100%);
+				border-radius:15px;
+				color:rgba(255,255,255,1);
+				line-height: 28px;
+				margin-top: 10px;
+			}
+			.bannerBox{
+				position: relative;
+				left: 0;
+				top: 0;
+				background-image: url(http://p2.qhimg.com/t0156142b033febd1c6.png);
+				background-repeat: no-repeat;
+				background-size: cover;
+				background-position: center;
+			}
+			.bannerContent{
+				width: 100%;
+				height: 100%;
+				padding-top: 178px;
+				position: absolute;
+				z-index: 2;
+				left: 0;
+				top: 0;
+			}
+			.bannerDarkBgBox{
+				width: 100%;
+				height: 100%;
+				padding-top: 178px;
+				position: absolute;
+				z-index: 1;
+				left: 0;
+				top: 0;
+				background-image: url(http://p2.qhimg.com/t0136e81af789f00127.png);
+				background-repeat: no-repeat;
+				background-size: cover;
+				background-position: center;
+			}
+			.bannerBigTitle{
+				margin-bottom: 8px;
+			}
+			.bannerMidTitle{
+				margin-top: 0;
+			}
+			.bannerDownload{
+				width:300px;
+				height:60px;
+				border-radius:30px;
+				border:1px solid rgba(255,255,255,1);
+				font-size:28px;
+				color:rgba(255,255,255,1);
+				line-height:56px;
+				margin: 36px auto 0;
+			}
+			.bannerTips{
+				font-size: 14px;
+				color:rgba(255,255,255,1);
+				margin-top: 10px;
+			}
+			.bannerTips img{
+				width: 14px;
+				height: 14px;
+				margin-right: 5px;
+			}
+			.bannerStar{
+				width: 95px;
+				position: absolute;
+				opacity: 0;
+			}
+			@keyframes starAnimation1{
+				0%   {top:65px;left: 58%;opacity:1;}
+				25%  {top:200px;left: 47%;opacity:1;}
+			  50%  {top:335px;left: 36%;opacity:1;}
+			  75%  {top:470px;left: 25%;opacity:1;}
+			  100% {top:605px;left: 14%;opacity:0;}
+			}
+			@-webkit-keyframes starAnimation1{
+				0%   {top:65px;left: 58%;opacity:1;}
+				25%  {top:200px;left: 47%;opacity:1;}
+			  50%  {top:335px;left: 36%;opacity:1;}
+			  75%  {top:470px;left: 25%;opacity:1;}
+			  100% {top:605px;left: 14%;opacity:0;}
+			}
+			@keyframes starAnimation2{
+				0%   {top:150px;left: 90%;opacity:1;}
+				25%  {top:230px;left: 81%;opacity:1;}
+			  50%  {top:310px;left: 72%;opacity:1;}
+			  75%  {top:390px;left: 63%;opacity:1;}
+			  100% {top:470px;left: 54%;opacity:0;}
+			}
+			@-webkit-keyframes starAnimation2{
+				0%   {top:150px;left: 90%;opacity:1;}
+				25%  {top:230px;left: 81%;opacity:1;}
+			  50%  {top:310px;left: 72%;opacity:1;}
+			  75%  {top:390px;left: 63%;opacity:1;}
+			  100% {top:470px;left: 54%;opacity:0;}
+			}
+			
+			.safeBox{
+				width: 1200px;
+				margin:0 auto;
+				padding: 50px 0;
+			}
+			.earthBox{
+				height: 600px;
+				background-image: url(http://p6.qhimg.com/t0122c558da1d2c81ab.png);
+				background-repeat: no-repeat;
+				background-size: cover;
+				background-position: center;
+			}
+			.safeBigTitle{
+				margin-top: 290px;
+			}
+			.pointBox{
+				width: 930px;
+				margin: -50px auto 0;
+				display: flex;
+				justify-content:space-around;
+			}
+			.point .circle{
+				width: 68px;
+				height: 68px;
+				border-radius: 100%;
+				margin: 0 auto 13px;
+			}
+			.point .circle img{
+				width: 100%;
+			}
+			.point .word{
+				font-size:20px;
+				color:rgba(255,255,255,1);
+				text-align: center;
+			}
+			.privateBigTitle{
+				margin: 210px auto 0;
+			}
+			.privateImg{
+				width: 813px;
+				height: 478px;
+				margin: 72px auto 0;
+			}
+			.allPlatformBigTitle{
+				margin: 260px auto 0;
+			}
+			.allPlatformPointBox{
+				margin-top: 48px;
+				opacity: 0;
+			}
+			.allPlatformPointBox .circle{
+				width: 60px;
+				height: 60px;
+				margin-bottom: 16px;
+			}
+			.allPlatformImgBox{
+				position: relative;
+				top:0;
+				left: 0;
+				height: 846px;
+			}
+			.allPlatformImg{
+				width: 100%;
+				position: absolute;
+				top:0;
+				left: 0;
+			}
+			.allPlatformImg0{
+				z-index: 2;
+				opacity: 0;
+			}
+			.allPlatformImg1{
+				z-index: 1;
+			}
+			.powerfulBox{
+				margin-top: -40px;
+				position: relative;
+				top: 0;
+				left: 0;
+			}
+			#swiper{
+				margin-top: 84px;
+			}
+			#swiper .swiper-wrapper .swiper-slide{
+				display: inline-block;
+				width: 630px;
+			}
+			#swiper .swiper-wrapper .swiper-slide-active{
+				display: inline-block;
+				width: 630px;
+			}
+			.swiperImgBox{
+				width: 630px;
+				height: 394px;
+				background:rgba(25,25,29,1);
+			}
+			.swiper-slide .swiperImg{
+				width: 630px;
+				height: 394px;
+			}
+			.swiperDesBox{
+				margin-top: 37px;
+				color: #fff;
+			}
+			.swiperDesIconBox{
+				font-size: 14px;
+				width: 74px;
+				margin-right: 10px;
+			}
+			.swiperDesIcon{
+				width: 56px;
+				height: 56px;
+				margin: 0 auto 12px;
+			}
+			.swiperDes{
+				width: calc(100% - 85px);
+				font-size: 16px;
+				line-height: 26px;
+				margin-top: 2px;
+			}
+			.customPagination{
+				margin-top: 80px;
+				height: 20px;
+			}
+			.pagination{
+				width:110px;
+				height:2px;
+				background:rgba(72,72,76,1);
+				border-radius:2px;
+				margin:0 10px;
+			}
+			.paginationActive{
+				background:rgba(255,255,255,1);
+			}
+			
+			.mojaveBigTitle{
+				margin: 240px auto 0;
+			}
+			.mojaveImgBox{
+				width: 782px;
+				height: 452px;
+				margin: 83px auto 20px;
+				position: relative;
+				top:0;
+				left: 0;
+				background-image: url(http://p9.qhimg.com/t016c48d34f7649de2c.png);
+				background-repeat: no-repeat;
+				background-size: cover;
+				background-position: center;
+			}
+			#rangeInput{
+				direction: ltr;
+				cursor: ew-resize;
+				-webkit-appearance: none;
+				-moz-appearance: none;
+				-webkit-transform: translateY(-50%);
+				transform: translateY(-50%);
+				background-color: transparent;
+				width: 100%;
+				position: absolute;
+				top: calc(50% + 10px);
+				z-index: 3;
+				opacity: 0;
+			}
+			.rangeInputLabel{
+				width: 58px;
+				height: 486px;
+				background-image: url(http://p5.qhimg.com/t01d4724db82ca0255f.png);
+				background-repeat: no-repeat;
+				background-size: cover;
+				background-position: center;
+				position: absolute;
+				top:-17px;
+				/* left: 50%; */
+				left: 0;
+				margin-left: -29px;
+				z-index: 2;
+			}
+			.topShowBox{
+				/* width: 50%; */
+				width: 0;
+				height: 100%;
+				background-image: url(http://p8.qhimg.com/t012790a01c54bc5a1d.png);
+				background-repeat: no-repeat;
+				background-size: 782px 452px;
+				background-position: left top;
+			}
+			.electricBigTitle{
+				margin: 255px auto 0;
+			}
+			.electricVideoBox{
+				width: 1000px;
+				height: 580px;
+				background:rgba(25,25,29,1);
+				margin: 64px auto 0;
+				padding-top: 60px;
+			}
+			.paramBox{
+				width: 480px;
+				padding-top: 56px;
+			}
+			.paramTitle{
+				font-size:18px;
+				color:rgba(255,255,255,1);
+				margin: 12px 0;
+			}
+			.barBox{
+				width: 408px;
+				height: 190px;
+				border-top: 1px solid rgba(255,255,255,0.2);
+				border-bottom: 1px solid rgba(255,255,255,0.2);
+			}
+			.greenBar{
+				/* width: 100%; */
+				width: 0;
+				height: 8px;
+				background:linear-gradient(270deg,rgba(55,214,121,1) 0%,rgba(0,186,85,1) 100%);
+				margin-top:35px;
+			}
+			.darkBar{
+				/* width: 70%; */
+				width: 0;
+				height: 8px;
+				background:linear-gradient(90deg,rgba(96,93,104,1) 0%,rgba(182,181,189,1) 100%);
+			}
+			.barTip{
+				font-size:14px;
+				color:rgba(208,208,208,1);
+				line-height:20px;
+				margin: 10px 0 22px;
+			}
+			
+			
+			.times{
+				font-size: 44px;
+				color:rgba(55,214,121,1);
+			}
+			.times span{
+				font-size: 70px;
+			}
+			.footer{
+				height: 186px;
+				text-align: center;
+				color: #666666;
+				font-size: 12px;
+				line-height: 30px;
+				padding-top: 70px;
+				background:rgba(25,25,29,1);
+			}
+			.footer a{
+				color: #666666;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="header" class="header overHidden">
+			<div class="menus">
+				<h1 class="logo inlineBlock fl">
+					<img class="inlineBlock fl" src="http://p0.qhimg.com/t018dd8a53c0e2cf61c.png" alt="360极速浏览器">
+					360极速浏览器 | Mac版
+				</h1>
+				<span class="tabBox fr inlineBlock">
+					<a href="" class="links fl num" style="color: green;font-weight: bold;"></a>
+					<a class="links fl" href="https://bbs.360.cn/forum-7583-1.html" target="_blank">论坛</a>
+					<a class="links fl" href="https://ext.chrome.360.cn/" target="_blank">扩展</a>
+					<a class="links fl" href="http://down.360safe.com/cse/360Browser_for_mac_qiangpiao.dmg" target="_blank">抢票专版</a>
+					<a class="links fl" href="https://browser.360.cn/ee/index.html" target="_blank">PC版</a>
+					<!-- <a class="links fl" href="" target="_blank">English</a> -->
+					<a class="links fl downloadNow alineCenter" href="http://down.360safe.com/cse/360Browser_for_mac_1.0.1454.0.dmg" target="_blank">立即下载</a>
+				</span>
+				<span class="clearfix"></span>
+			</div>
+		</div>
+		<div class="bannerBox overHidden screenBox">
+			<div class="bannerContent">
+				<p class="bannerBigTitle bigTitleWord alineCenter titlesTransformDefault">更好用，不将就。</p>
+				<p class="bannerMidTitle midTitleWord alineCenter titlesTransformDefault">基于全新Chromium高速内核引擎，精心为您适配更好用的网络帮手。</p>
+				<a class="bannerDownload alineCenter block titlesTransformDefault" href="http://down.360safe.com/cse/360Browser_for_mac_1.0.1454.0.dmg" target="_blank">立即体验</a>
+				<p class="bannerTips alineCenter titlesTransformDefault"><img class="inlineBlock" src="http://p6.qhimg.com/t01cfb89a5e87c3e8c1.png" alt="Mac OS X 10.9 及以上适用">Mac OS X 10.9 及以上适用</p>
+				<img class="bannerStar" src="http://p1.qhimg.com/t0196d7c36490c9ddbe.png" alt="">
+			</div>
+			<div class="bannerDarkBgBox"></div>
+		</div>
+		<div class="safeBox overHidden">
+			<div class="earthBox overHidden">
+				<p class="safeBigTitle bigTitleWord alineCenter titlesTransformDefault">安全，你无需担忧。</p>
+				<p class="safeMidTitle midTitleWord alineCenter titlesTransformDefault">隐私与安全不该只是期望，我们为您提供优质的安保措施，避免诱骗网站和危险网站的侵害，打造轻松畅游丰富的网络世界；不仅如此，崭新的Mac版极速浏览器采用多种安全技术捍卫您的网上隐私与安全。</p>
+			</div>
+			<div class="pointBox safePointBox titlesTransformDefault">
+				<span class="point inlineBlock">
+					<span class="circle block"><img src="http://p6.qhimg.com/t0130e9e278186b747b.png" alt="网站隔离"></span>
+					<p class="word">网站隔离</p>
+				</span>
+				<span class="point inlineBlock">
+					<span class="circle block"><img src="http://p7.qhimg.com/t01ee15181ad70c25bb.png" alt="沙箱技术"></span>
+					<p class="word">沙箱技术</p>
+				</span>
+				<span class="point inlineBlock">
+					<span class="circle block"><img src="http://p1.qhimg.com/t01c042d4186062a33a.png" alt="防网络诈骗"></span>
+					<p class="word">防网络诈骗</p>
+				</span>
+				<span class="point inlineBlock">
+					<span class="circle block"><img src="http://p2.qhimg.com/t019189b42a8fa856ce.png" alt="危险网站防范"></span>
+					<p class="word">危险网站防范</p>
+				</span>
+			</div>
+		</div>
+		<div class="privateBox overHidden">
+			<p class="privateBigTitle bigTitleWord alineCenter titlesTransformDefault">踏网无痕，私人浏览。</p>
+			<p class="privateMidTitle midTitleWord alineCenter titlesTransformDefault">浏览的历史记录不想被发现？打开无痕浏览模式，将不会记录任何访问过的网页、搜索历史或“自动填充”，让您做到真正的无痕浏览不透足迹，保护您的网上隐私。</p>
+			<img class="privateImg block" src="http://p8.qhimg.com/t015c209683c94b19cd.png" alt="踏网无痕，私人浏览">
+		</div>
+		<div class="allPlatformBox overHidden">
+			<p class="allPlatformBigTitle bigTitleWord alineCenter titlesTransformDefault">全平台同步，无缝畅游。</p>
+			<p class="allPlatformMidTitle midTitleWord alineCenter titlesTransformDefault">无论您使用的是Windows、MacOS、国产系统、IOS、Android，只需登陆官方账号即可轻松同步您的密码、收藏夹、设置、扩展应用；您还可以迁移Safari、Google的收藏夹。打造真正的全平台同步，实现多屏切换。</p>
+			<div class="pointBox allPlatformPointBox">
+				<span class="point inlineBlock">
+					<span class="circle block"><img src="http://p8.qhimg.com/t01d1ff0b4b7fcf80d6.png" alt="Windows"></span>
+					<p class="word">Windows</p>
+				</span>
+				<span class="point inlineBlock">
+					<span class="circle block"><img src="http://p9.qhimg.com/t0145de973ef3cbec80.png" alt="MacOS"></span>
+					<p class="word">MacOS</p>
+				</span>
+				<span class="point inlineBlock">
+					<span class="circle block"><img src="http://p3.qhimg.com/t011393e1b97e2c5c42.png" alt="Linux"></span>
+					<p class="word">Linux</p>
+				</span>
+				<span class="point inlineBlock">
+					<span class="circle block"><img src="http://p2.qhimg.com/t0196b79c712ddb187f.png" alt="iOS"></span>
+					<p class="word">iOS</p>
+				</span>
+				<span class="point inlineBlock">
+					<span class="circle block"><img src="http://p6.qhimg.com/t01cce1c44786b2aa38.png" alt="Android"></span>
+					<p class="word">Android</p>
+				</span>
+			</div>
+			<div class="allPlatformImgBox">
+				<img class="allPlatformImg allPlatformImg0" src="http://p7.qhimg.com/t0111b4f9a40adc7964.png" alt="全平台同步，无缝畅游">
+				<img class="allPlatformImg allPlatformImg1" src="http://p4.qhimg.com/t01d95ee45b9118a933.png" alt="全平台同步，无缝畅游">
+			</div>
+		</div>
+		<div class="powerfulBox overHidden">
+			<p class="powerfulBigTitle bigTitleWord alineCenter titlesTransformDefault">强大、个性，从不将就。</p>
+			<p class="powerfulMidTitle midTitleWord alineCenter titlesTransformDefault">无需科学上网，便可拥有数万款功能扩展，根据您的喜好及需求随意添加，打造属于你的强大浏览体验。 明星工具（购物比价、视频下载、广告拦截、抢票、截图）</p>
+			<div class="swiper-container" id="swiper">
+				<div class="swiper-wrapper">
+					<div class="swiper-slide">
+						<div class="swiperImgBox">
+							<img class="swiperImg" src="http://p4.qhimg.com/t01ba12de299bb9d4a1.png" alt="长截图">
+						</div>
+						<div class="swiperDesBox">
+							<span class="swiperDesIconBox alineCenter inlineBlock fl">
+								<img class="swiperDesIcon block" src="http://p7.qhimg.com/t015ea734026971d768.png" alt="长截图">
+								全网页截图
+							</span>
+							<span class="swiperDes inlineBlock fl">只要轻松一点，就能自动滚动截取整个网页，网页截图就是这么简单。完成截 图后，在浏览器新窗口打开所截的图片，可通过“右键-另存为”进行保存。</span>
+						</div>
+					</div>
+					<div class="swiper-slide">
+						<div class="swiperImgBox">
+							<img class="swiperImg" src="http://p6.qhimg.com/t01dddc33fe18e58036.png" alt="广告拦截">
+						</div>
+						<div class="swiperDesBox">
+							<span class="swiperDesIconBox alineCenter inlineBlock fl">
+								<img class="swiperDesIcon block" src="http://p7.qhimg.com/t013f716c309fa81fc0.png" alt="广告拦截">
+								广告拦截
+							</span>
+							<span class="swiperDes inlineBlock fl">高效、强力的广告过滤器，完美去广告，包括各种网站横幅广告，联盟广告等， 给您清爽浏览体验。</span>
+						</div>
+					</div>
+					<div class="swiper-slide">
+						<div class="swiperImgBox">
+							<img class="swiperImg" src="http://p5.qhimg.com/t01b66d70dfcc2c64e4.png" alt="抢票">
+						</div>
+						<div class="swiperDesBox">
+							<span class="swiperDesIconBox alineCenter inlineBlock fl">
+								<img class="swiperDesIcon block" src="http://p4.qhimg.com/t01d0b9c088e4c51286.png" alt="抢票">
+								抢票王
+							</span>
+							<span class="swiperDes inlineBlock fl">360抢票第一神器，已为2亿用户抢到票。4大功能，帮你抢到火车票。抢票七 代全新升级，抢票速度提升100%。</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="customPagination alineCenter"></div>
+		</div>
+		<div class="mojaveBox overHidden">
+			<p class="mojaveBigTitle bigTitleWord alineCenter titlesTransformDefault">跟随MacOS Mojave系统智能切换主题。</p>
+			<p class="mojaveMidTitle midTitleWord alineCenter titlesTransformDefault">跟随MacOS Mojave系统智能切换，并配有多款内置精美皮肤。高颜值，更加独特。</p>
+			<div class="mojaveImgBox">
+				<span class="rangeInputLabel inlineBlock"></span>
+				<input id="rangeInput" type="range" min="0" max="100">
+				<div class="topShowBox"></div>
+			</div>
+		</div>
+		<div class="electricBox overHidden screenBox">
+			<p class="electricBigTitle bigTitleWord alineCenter titlesTransformDefault">省电模式，提高浏览器的续航力。</p>
+			<p class="electricMidTitle midTitleWord alineCenter titlesTransformDefault">跟随MacOS Mojave系统智能切换，并配有多款内置精美皮肤。高颜值，更加独特。</p>
+			<div class="electricVideoBox">
+				<video width="520" height="520" class="video" id="video" src="http://s7.qhres.com/static/a59d727d578c757e.mp4" preload>
+					当前浏览器不支持 video 直接播放
+				</video>
+				<div class="paramBox inlineBlock fr">
+					<p class="paramTitle">15 英寸机型</p>
+					<div class="barBox">
+						<div class="bar greenBar"></div>
+						<div class="barTip">省电模式下续航时长</div>
+						<div class="bar darkBar"></div>
+						<div class="barTip">普通模式下续航时间</div>
+					</div>
+					<p class="paramTitle">延长使用时间</p>
+					<p class="times"><span class="timeNum">0</span>%</p>
+				</div>
+			</div>
+		</div>
+		<div id="footer" class="footer">
+			Copyright &#169 2005-2019 360.CN All Rights Reserved 360互联网安全中心 隐私权政策 京ICP证080047号<br />
+			<a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11000002000006"> <img src="https://p4.ssl.qhimg.com/t01d8eda6e551cf2615.png" style="vertical-align: middle; border:none;" alt=""> 京公网安备 11000002000006号</a>
+		</div>
+		
+		<script src="https://s0.ssl.qhimg.com/!d72afc4d/jquery-1.8.0.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/js/swiper.min.js"></script>
+		<script type="text/javascript">
+			var u = navigator.userAgent;
+			if(u.indexOf('Mac') > -1){
+				$('html,body').css({
+					'font-family':'PingFang SC',
+				})
+			};
+			var mySwiper = new Swiper('.swiper-container', {		
+				loop:true,							// 循环
+				slidesPerView: "auto",	// 自适应显示 swiper-slide 的个数
+        centeredSlides:true,		// 默认第一块居中
+				spaceBetween:107,				// swiper-slide 之间的间距为 107px
+				pagination: {
+					el: '.customPagination ',
+					type:'custom',
+					clickable: true,
+					renderCustom: function (swiper, current, total) {
+						var domStr = '';
+						for(var i = 1; i <= total; i++){
+							if(current == i){
+								domStr += '<span class="inlineBlock pagination pagination' + i + ' paginationActive"></span>';
+							}else{
+								domStr += '<span class="inlineBlock pagination pagination' + i + '"></span>';
+							}
+						};
+						return domStr;
+					}
+				},
+			});
+		// 页面滚动控制文字标题等显示动效 --------------- 开始 -----------------------
+			$(document).scroll(function(e){
+				var scrollTop = $(document).scrollTop();
+				$('.num').html(scrollTop);
+				// header 背景色控制
+				if(scrollTop > 48){
+					$('.header').css({
+						'background-color':'rgba(25,25,29,1)',
+					})
+				}else{
+					$('.header').css({
+						'background-color':'#000',
+					})
+				};
+				// 文字标题显示控制
+				if(scrollTop >= 0 && scrollTop < 700 && !$('.bannerBigTitle').hasClass('titlesTransformActive')){
+					$('.bannerBigTitle').addClass('titlesTransformActive');
+					setTimeout(function(){
+						$('.bannerMidTitle').addClass('titlesTransformActive');
+					},200);
+					setTimeout(function(){
+						$('.bannerDownload').addClass('titlesTransformActive');
+						$('.bannerTips').addClass('titlesTransformActive');
+					},200);
+					$('.bannerDarkBgBox').fadeOut(1600);
+				};
+				if(scrollTop >= 800 && scrollTop <= 1600 && !$('.safeBigTitle').hasClass('titlesTransformActive')){
+					$('.safeBigTitle').addClass('titlesTransformActive');
+					setTimeout(function(){
+						$('.safeMidTitle').addClass('titlesTransformActive');
+					},200);
+					setTimeout(function(){
+						$('.safePointBox').addClass('titlesTransformActive');
+					},400);
+				};
+				if(scrollTop >= 1450 && scrollTop <= 2060 && !$('.privateBigTitle').hasClass('titlesTransformActive')){
+					$('.privateBigTitle').addClass('titlesTransformActive');
+					setTimeout(function(){
+						$('.privateMidTitle').addClass('titlesTransformActive');
+					},200);
+				};
+				if(scrollTop >= 2520 && scrollTop <= 3500 && !$('.allPlatformBigTitle').hasClass('titlesTransformActive')){
+					$('.allPlatformBigTitle').addClass('titlesTransformActive');
+					setTimeout(function(){
+						$('.allPlatformMidTitle').addClass('titlesTransformActive');
+					},200);
+					setTimeout(function(){
+						$('.allPlatformPointBox').css({
+							'opacity':'1',
+							'transition': 'opacity 1.4s',
+						});
+						$('.allPlatformImg0').css({
+							'opacity':'1',
+							'transition': 'opacity 1.4s',
+						});
+					},400);
+				};
+				if(scrollTop >= 3600 && scrollTop <= 4700 && !$('.powerfulBigTitle').hasClass('titlesTransformActive')){
+					$('.powerfulBigTitle').addClass('titlesTransformActive');
+					setTimeout(function(){
+						$('.powerfulMidTitle').addClass('titlesTransformActive');
+					},200);
+					mySwiper.autoplay.start();
+				};
+				if(scrollTop >= 4700 && scrollTop <= 5700 && !$('.mojaveBigTitle').hasClass('titlesTransformActive')){
+					$('.mojaveBigTitle').addClass('titlesTransformActive');
+					setTimeout(function(){
+						$('.mojaveMidTitle').addClass('titlesTransformActive');
+					},200);
+					var rangeNum = 0;
+					var rangeInterval = setInterval(function(){
+						if(rangeNum < 50){
+							rangeNum += 1;
+							$('#rangeInput').attr('value',rangeNum);
+							setPosition(rangeNum);
+						}else{
+							clearInterval(rangeInterval);
+						}
+					},18);	
+				};
+				if(scrollTop >= 5670 && !$('.electricBigTitle').hasClass('titlesTransformActive')){
+					$('.electricBigTitle').addClass('titlesTransformActive');
+					setTimeout(function(){
+						$('.electricMidTitle').addClass('titlesTransformActive');
+					},200);
+					// 柱状图和数字动效变化控制
+					$('.greenBar').css({
+						width:'100%',
+						transition: 'width 1s',
+					})
+					$('.darkBar').css({
+						width:'70%',
+						transition: 'width 1s',
+					});
+					if($('.greenBar').css('width') == '0px'){
+						var num = 0;
+						var time = 20;
+						function numInterval(){
+							if(num < 50){
+								num += 1;
+								if(num >= 40 && num < 45){
+									time = 60;
+								}else if(num >= 45){
+									time = 80;
+								};
+								$('.timeNum').html(num);	
+								setTimeout(function(){
+									numInterval();
+								},time)
+							};
+						};
+						numInterval();
+					}
+				};
+					// 视频播放
+				if(scrollTop >= 5970 && !isVideoPlayed){
+					document.getElementById("video").play();
+					isVideoPlayed = true;
+				};
+			})
+			var isVideoPlayed = false;
+			$(document).trigger('scroll');
+		// 页面滚动控制文字标题等显示动效 --------------- 结束 -----------------------	
+		
+		// banner 流星效果-----------------------开始------------------------------
+			function setStar(){
+				$('.bannerStar').css({
+					'animation':'starAnimation1 3s linear',
+					'-webkit-animation':'starAnimation1 3s linear',
+				});
+				setTimeout(function(){
+					$('.bannerStar').css({
+						'animation':'starAnimation2 3s linear',
+						'-webkit-animation':'starAnimation2 3s linear',
+					});
+				},4500)
+			};
+			setTimeout(function(){
+				setStar();
+				setInterval(function(){
+					setStar();
+				},10000);
+			},3000)
+			
+		// banner 流星效果-----------------------结束------------------------------
+
+		// mojave 栏目左右拖动效果-----------------开始----------------------------
+			function setPosition(num){
+					$('.rangeInputLabel').css({
+					left:num + '%',
+				});
+				$('.topShowBox').css({
+					width:num + '%',
+				});
+			}
+			$('#rangeInput').bind("input", function(){
+				var val = $(this).val();
+				setPosition(val);
+			});
+		// mojave 栏目左右拖动效果-----------------结束----------------------------
+		</script>
+		
+	</body>
 </html>
