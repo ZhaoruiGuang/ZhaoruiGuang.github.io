@@ -334,9 +334,10 @@
 				font-size: 16px;
 				line-height: 26px;
 				margin-top: 2px;
+				color:rgba(200,200,200,1);
 			}
 			.customPagination{
-				margin-top: 80px;
+				margin-top: 60px;
 				height: 20px;
 			}
 			.pagination{
@@ -646,10 +647,11 @@
 				})
 			};
 			var mySwiper = new Swiper('.swiper-container', {		
-				loop:true,							// 循环
-				slidesPerView: "auto",	// 自适应显示 swiper-slide 的个数
-        centeredSlides:true,		// 默认第一块居中
-				spaceBetween:107,				// swiper-slide 之间的间距为 107px
+				loop:true,									// 循环
+				slidesPerView: "auto",			// 自适应显示 swiper-slide 的个数
+        centeredSlides:true,				// 默认第一块居中
+				spaceBetween:107,						// swiper-slide 之间的间距为 107px
+				slideToClickedSlide: true,	// 点击切换
 				pagination: {
 					el: '.customPagination ',
 					type:'custom',
@@ -729,7 +731,7 @@
 					setTimeout(function(){
 						$('.powerfulMidTitle').addClass('titlesTransformActive');
 					},200);
-					mySwiper.autoplay.start();
+					// mySwiper.autoplay.start();
 				};
 				if(scrollTop >= 4700 && scrollTop <= 5700 && !$('.mojaveBigTitle').hasClass('titlesTransformActive')){
 					$('.mojaveBigTitle').addClass('titlesTransformActive');
