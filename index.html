@@ -4,15 +4,14 @@
 		<title>360极速浏览器</title>
 		<meta charset="UTF-8" />
 		<meta name="renderer" content="webkit">
-		<meta name="description" content="360极速浏览器" />
-		<meta name="keywords" content="360,浏览器,极速浏览器" />
+		<meta name="keywords" content="Mac浏览器,苹果浏览器,浏览器 for mac,极速浏览器,360浏览器,360极速浏览器,高速浏览器,chrome,ie,高速引擎,跨平台浏览器,同步收藏夹,书签同步,触控板手势">
+		<meta name="description" content="360极速浏览器Mac版是国内Mac用户首选的浏览器。360极速浏览器Mac版继承了360极速浏览器多年用户经验沉淀下来的经典操作，同时针对Mac用户的使用习惯推出了更多更好用更实用的新功能，除此之外，更是将“极速”在Mac浏览器发挥得淋漓尽致。">
 		<script type="text/javascript">
 		  var isMac = /Macintosh.* Mac OS X.*/i.test(navigator.userAgent);
 		  if (isMac && location.protocol == 'http:') {
 		    location.href = location.href.replace(/^http:/, 'https:');
 		  }
 		</script>
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/css/swiper.min.css">
 		<style type="text/css">
 			html,body {
 				width: 100%;
@@ -60,6 +59,7 @@
 				font-weight: 600;
 				line-height:90px;
 				color:rgba(255,255,255,1);
+				padding: 0 100px;
 			}
 			.midTitleWord{
 				display: block;
@@ -78,6 +78,10 @@
 				opacity: 1;
 				top:0;
 				transition: opacity 1s, top 1s;
+				-moz-transition: opacity 1s, top 1s;
+				-ms-transition: opacity 1s, top 1s;
+				-webkit-transition: opacity 1s, top 1s;
+				-o-transition: opacity 1s, top 1s;
 			}
 			
 			.header {
@@ -200,6 +204,27 @@
 			  75%  {top:470px;left: 25%;opacity:1;}
 			  100% {top:605px;left: 14%;opacity:0;}
 			}
+			@-moz-keyframes starAnimation1{
+				0%   {top:65px;left: 58%;opacity:1;}
+				25%  {top:200px;left: 47%;opacity:1;}
+			  50%  {top:335px;left: 36%;opacity:1;}
+			  75%  {top:470px;left: 25%;opacity:1;}
+			  100% {top:605px;left: 14%;opacity:0;}
+			}
+			@-ms-keyframes starAnimation1{
+				0%   {top:65px;left: 58%;opacity:1;}
+				25%  {top:200px;left: 47%;opacity:1;}
+			  50%  {top:335px;left: 36%;opacity:1;}
+			  75%  {top:470px;left: 25%;opacity:1;}
+			  100% {top:605px;left: 14%;opacity:0;}
+			}
+			@-o-keyframes starAnimation1{
+				0%   {top:65px;left: 58%;opacity:1;}
+				25%  {top:200px;left: 47%;opacity:1;}
+			  50%  {top:335px;left: 36%;opacity:1;}
+			  75%  {top:470px;left: 25%;opacity:1;}
+			  100% {top:605px;left: 14%;opacity:0;}
+			}
 			@keyframes starAnimation2{
 				0%   {top:150px;left: 90%;opacity:1;}
 				25%  {top:230px;left: 81%;opacity:1;}
@@ -208,6 +233,27 @@
 			  100% {top:470px;left: 54%;opacity:0;}
 			}
 			@-webkit-keyframes starAnimation2{
+				0%   {top:150px;left: 90%;opacity:1;}
+				25%  {top:230px;left: 81%;opacity:1;}
+			  50%  {top:310px;left: 72%;opacity:1;}
+			  75%  {top:390px;left: 63%;opacity:1;}
+			  100% {top:470px;left: 54%;opacity:0;}
+			}
+			@-moz-keyframes starAnimation2{
+				0%   {top:150px;left: 90%;opacity:1;}
+				25%  {top:230px;left: 81%;opacity:1;}
+			  50%  {top:310px;left: 72%;opacity:1;}
+			  75%  {top:390px;left: 63%;opacity:1;}
+			  100% {top:470px;left: 54%;opacity:0;}
+			}
+			@-ms-keyframes starAnimation2{
+				0%   {top:150px;left: 90%;opacity:1;}
+				25%  {top:230px;left: 81%;opacity:1;}
+			  50%  {top:310px;left: 72%;opacity:1;}
+			  75%  {top:390px;left: 63%;opacity:1;}
+			  100% {top:470px;left: 54%;opacity:0;}
+			}
+			@-o-keyframes starAnimation2{
 				0%   {top:150px;left: 90%;opacity:1;}
 				25%  {top:230px;left: 81%;opacity:1;}
 			  50%  {top:310px;left: 72%;opacity:1;}
@@ -447,8 +493,6 @@
 				line-height:20px;
 				margin: 10px 0 22px;
 			}
-			
-			
 			.times{
 				font-size: 44px;
 				color:rgba(55,214,121,1);
@@ -469,6 +513,7 @@
 				color: #666666;
 			}
 		</style>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/css/swiper.min.css">
 	</head>
 	<body>
 		<div id="header" class="header overHidden">
@@ -648,6 +693,7 @@
 			};
 			var mySwiper = new Swiper('.swiper-container', {		
 				loop:true,									// 循环
+				speed:500,									// 切换过程花费的时间
 				slidesPerView: "auto",			// 自适应显示 swiper-slide 的个数
         centeredSlides:true,				// 默认第一块居中
 				spaceBetween:107,						// swiper-slide 之间的间距为 107px
@@ -719,10 +765,18 @@
 						$('.allPlatformPointBox').css({
 							'opacity':'1',
 							'transition': 'opacity 1.4s',
+							'-webkit-transition': 'opacity 1.4s',
+							'-moz-transition': 'opacity 1.4s',
+							'-ms-transition': 'opacity 1.4s',
+							'-o-transition': 'opacity 1.4s',
 						});
 						$('.allPlatformImg0').css({
 							'opacity':'1',
 							'transition': 'opacity 1.4s',
+							'-webkit-transition': 'opacity 1.4s',
+							'-moz-transition': 'opacity 1.4s',
+							'-ms-transition': 'opacity 1.4s',
+							'-o-transition': 'opacity 1.4s',
 						});
 					},400);
 				};
@@ -758,10 +812,18 @@
 					$('.greenBar').css({
 						width:'100%',
 						transition: 'width 1s',
+						'-webkit-transition': 'width 1s',
+						'-moz-transition': 'width 1s',
+						'-ms-transition': 'width 1s',
+						'-o-transition': 'width 1s',
 					})
 					$('.darkBar').css({
 						width:'70%',
 						transition: 'width 1s',
+						'-webkit-transition': 'width 1s',
+						'-moz-transition': 'width 1s',
+						'-ms-transition': 'width 1s',
+						'-o-transition': 'width 1s',
 					});
 					if($('.greenBar').css('width') == '0px'){
 						var num = 0;
@@ -798,11 +860,17 @@
 				$('.bannerStar').css({
 					'animation':'starAnimation1 3s linear',
 					'-webkit-animation':'starAnimation1 3s linear',
+					'-moz-animation': 'starAnimation1 3s linear',
+					'-ms-animation': 'starAnimation1 3s linear',
+					'-o-animation': 'starAnimation1 3s linear',
 				});
 				setTimeout(function(){
 					$('.bannerStar').css({
 						'animation':'starAnimation2 3s linear',
 						'-webkit-animation':'starAnimation2 3s linear',
+						'-moz-animation': 'starAnimation2 3s linear',
+						'-ms-animation': 'starAnimation2 3s linear',
+						'-o-animation': 'starAnimation2 3s linear',
 					});
 				},4500)
 			};
