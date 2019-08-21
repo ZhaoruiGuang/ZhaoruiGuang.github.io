@@ -67,7 +67,7 @@
 				margin: 20px auto 0;
 				font-size: 20px;
 				line-height:28px;
-				color:rgba(255,255,255,1);
+				color:rgba(200,200,200,1);
 			}
 			.titlesTransformDefault{
 				opacity: 0;
@@ -177,7 +177,7 @@
 			}
 			.bannerTips{
 				font-size: 14px;
-				color:rgba(255,255,255,1);
+				color:rgba(200,200,200,1);
 				margin-top: 10px;
 			}
 			.bannerTips img{
@@ -264,7 +264,7 @@
 			.safeBox{
 				width: 1200px;
 				margin:0 auto;
-				padding: 50px 0;
+				padding: 68px 0;
 			}
 			.earthBox{
 				height: 600px;
@@ -293,7 +293,7 @@
 			}
 			.point .word{
 				font-size:20px;
-				color:rgba(255,255,255,1);
+				color:rgba(200,200,200,1);
 				text-align: center;
 			}
 			.privateBigTitle{
@@ -340,7 +340,7 @@
 				z-index: 1;
 			}
 			.powerfulBox{
-				margin-top: -40px;
+				margin-top: 96px;
 				position: relative;
 				top: 0;
 				left: 0;
@@ -367,7 +367,7 @@
 			}
 			.swiperDesBox{
 				margin-top: 37px;
-				color: #fff;
+				color: rgba(200,200,200,1);
 			}
 			.swiperDesIconBox{
 				font-size: 14px;
@@ -384,7 +384,6 @@
 				font-size: 16px;
 				line-height: 26px;
 				margin-top: 2px;
-				color:rgba(200,200,200,1);
 			}
 			.customPagination{
 				margin-top: 60px;
@@ -456,6 +455,9 @@
 				background-repeat: no-repeat;
 				background-size: 782px 452px;
 				background-position: left top;
+			}
+			.electricBox{
+				padding-bottom: 160px;
 			}
 			.electricBigTitle{
 				margin: 255px auto 0;
@@ -665,7 +667,7 @@
 				<div class="topShowBox"></div>
 			</div>
 		</div>
-		<div class="electricBox overHidden screenBox">
+		<div class="electricBox overHidden">
 			<p class="electricBigTitle bigTitleWord alineCenter titlesTransformDefault">省电模式，提高浏览器的续航力。</p>
 			<p class="electricMidTitle midTitleWord alineCenter titlesTransformDefault">跟随MacOS Mojave系统智能切换，并配有多款内置精美皮肤。高颜值，更加独特。</p>
 			<div class="electricVideoBox">
@@ -728,6 +730,9 @@
 			if(winHeight > 1200){
 				isBigScreen = true;
 			};
+			var isAllplatformMacShow = false;	// 全平台模块电脑图片是否已显示
+			var isMojaveAnimated = false;			// mojave 模块动效是否执行
+			var isVideoPlayed = false;				// 视频是否播放
 			$(document).scroll(function(e){
 				var scrollTop = $(document).scrollTop();
 				$('.num').html(scrollTop + '   ' + winHeight);
@@ -753,7 +758,7 @@
 					},200);
 					$('.bannerDarkBgBox').fadeOut(1600);
 				};
-				if(((scrollTop >= 800 && scrollTop <= 1600 && !isBigScreen) || (scrollTop >= 800 && scrollTop <= 1240 && isBigScreen)) && !$('.safeBigTitle').hasClass('titlesTransformActive')){
+				if(((scrollTop >= 820 && scrollTop <= 1620 && !isBigScreen) || (scrollTop >= 520 && scrollTop <= 1720 && isBigScreen)) && !$('.safeBigTitle').hasClass('titlesTransformActive')){
 					$('.safeBigTitle').addClass('titlesTransformActive');
 					setTimeout(function(){
 						$('.safeMidTitle').addClass('titlesTransformActive');
@@ -762,19 +767,19 @@
 						$('.safePointBox').addClass('titlesTransformActive');
 					},400);
 				};
-				if(((scrollTop >= 1450 && scrollTop <= 2060 && !isBigScreen) || (scrollTop >= 1450 && scrollTop <= 2400 && isBigScreen)) && !$('.privateBigTitle').hasClass('titlesTransformActive')){
+				if(((scrollTop >= 1470 && scrollTop <= 2080 && !isBigScreen) || (scrollTop >= 1060 && scrollTop <= 2160 && isBigScreen)) && !$('.privateBigTitle').hasClass('titlesTransformActive')){
 					$('.privateBigTitle').addClass('titlesTransformActive');
 					setTimeout(function(){
 						$('.privateMidTitle').addClass('titlesTransformActive');
 					},200);
 				};
-				if(((scrollTop >= 2520 && scrollTop <= 3500 && !isBigScreen) || (scrollTop >= 2520 && scrollTop <= 3500 && isBigScreen)) && !$('.allPlatformBigTitle').hasClass('titlesTransformActive')){
+				if(((scrollTop >= 2420 && scrollTop <= 3220 && !isBigScreen) || (scrollTop >= 2060 && scrollTop <= 3220 && isBigScreen)) && !$('.allPlatformBigTitle').hasClass('titlesTransformActive')){
 					$('.allPlatformBigTitle').addClass('titlesTransformActive');
 					setTimeout(function(){
 						$('.allPlatformMidTitle').addClass('titlesTransformActive');
 					},200);
 					setTimeout(function(){
-						$('.allPlatformPointBox').css({
+						 $('.allPlatformPointBox').css({
 							'opacity':'1',
 							'transition': 'opacity 1.4s',
 							'-webkit-transition': 'opacity 1.4s',
@@ -782,28 +787,33 @@
 							'-ms-transition': 'opacity 1.4s',
 							'-o-transition': 'opacity 1.4s',
 						});
-						$('.allPlatformImg0').css({
-							'opacity':'1',
-							'transition': 'opacity 2s',
-							'-webkit-transition': 'opacity 2s',
-							'-moz-transition': 'opacity 2s',
-							'-ms-transition': 'opacity 2s',
-							'-o-transition': 'opacity 2s',
-						});
 					},400);
 				};
-				if(((scrollTop >= 3600 && scrollTop <= 4700 && !isBigScreen) || (scrollTop >= 3600 && scrollTop <= 4700 && isBigScreen)) && !$('.powerfulBigTitle').hasClass('titlesTransformActive')){
+				if(((scrollTop >= 2720 && scrollTop <= 3720 && !isBigScreen) || (scrollTop >= 2370 && scrollTop <= 3720 && isBigScreen)) && !isAllplatformMacShow){
+					 $('.allPlatformImg0').css({
+					 	'opacity':'1',
+					 	'transition': 'opacity 2s',
+					 	'-webkit-transition': 'opacity 2s',
+					 	'-moz-transition': 'opacity 2s',
+					 	'-ms-transition': 'opacity 2s',
+					 	'-o-transition': 'opacity 2s',
+					 });
+					 isAllplatformMacShow = true;
+				};
+				if(((scrollTop >= 3750 && scrollTop <= 4850 && !isBigScreen) || (scrollTop >= 3300 && scrollTop <= 4350 && isBigScreen)) && !$('.powerfulBigTitle').hasClass('titlesTransformActive')){
 					$('.powerfulBigTitle').addClass('titlesTransformActive');
 					setTimeout(function(){
 						$('.powerfulMidTitle').addClass('titlesTransformActive');
 					},200);
 					mySwiper.autoplay.start();
 				};
-				if(((scrollTop >= 4700 && scrollTop <= 5700 && !isBigScreen) || (scrollTop >= 4700 && scrollTop <= 5700 && isBigScreen)) && !$('.mojaveBigTitle').hasClass('titlesTransformActive')){
+				if(((scrollTop >= 4650 && scrollTop <= 5450 && !isBigScreen) || (scrollTop >= 4300 && scrollTop <= 5430 && isBigScreen)) && !$('.mojaveBigTitle').hasClass('titlesTransformActive')){
 					$('.mojaveBigTitle').addClass('titlesTransformActive');
 					setTimeout(function(){
 						$('.mojaveMidTitle').addClass('titlesTransformActive');
 					},200);
+				};
+				if(((scrollTop >= 4870 && scrollTop <= 5850 && !isBigScreen) || (scrollTop >= 4600 && scrollTop <= 5790 && isBigScreen)) && !isMojaveAnimated){
 					var rangeNum = 0;
 					var rangeInterval = setInterval(function(){
 						if(rangeNum < 50){
@@ -814,12 +824,16 @@
 							clearInterval(rangeInterval);
 						}
 					},18);	
+					isMojaveAnimated = true;
 				};
-				if(((scrollTop >= 5670 && !isBigScreen) || (scrollTop >= 5670 && isBigScreen)) && !$('.electricBigTitle').hasClass('titlesTransformActive')){
+				if(((scrollTop >= 5550 && scrollTop <= 6380 && !isBigScreen) || (scrollTop >= 5290 && isBigScreen)) && !$('.electricBigTitle').hasClass('titlesTransformActive')){
 					$('.electricBigTitle').addClass('titlesTransformActive');
 					setTimeout(function(){
 						$('.electricMidTitle').addClass('titlesTransformActive');
 					},200);
+				};
+					// 视频播放
+				if(((scrollTop >= 6200 && !isBigScreen) || (scrollTop >= 5890 && isBigScreen)) && !isVideoPlayed){
 					// 柱状图和数字动效变化控制
 					$('.greenBar').css({
 						width:'100%',
@@ -856,14 +870,10 @@
 						};
 						numInterval();
 					}
-				};
-					// 视频播放
-				if(((scrollTop >= 5970 && !isBigScreen) || (scrollTop >= 5970 && isBigScreen)) && !isVideoPlayed){
 					document.getElementById("video").play();
 					isVideoPlayed = true;
 				};
-			})
-			var isVideoPlayed = false;
+			});
 			$(document).ready(function(){
 				$(this).trigger('scroll');
 			});
