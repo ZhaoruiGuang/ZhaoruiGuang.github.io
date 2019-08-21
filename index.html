@@ -390,14 +390,18 @@
 				margin-top: 60px;
 				height: 20px;
 			}
-			.pagination{
+			
+			.customPagination .swiper-pagination-bullet{
+				display: inline-block;
 				width:110px;
 				height:2px;
 				background:rgba(72,72,76,1);
 				border-radius:2px;
 				margin:0 10px;
+				cursor: pointer;
+				opacity: 1;
 			}
-			.paginationActive{
+			.customPagination .swiper-pagination-bullet-active{
 				background:rgba(255,255,255,1);
 			}
 			
@@ -695,7 +699,11 @@
 					'font-family':'PingFang SC',
 				})
 			};
-			var mySwiper = new Swiper('.swiper-container', {		
+			var mySwiper = new Swiper('.swiper-container', {	
+				autoplay: {
+					delay: 3000,
+					disableOnInteraction:false,	// 用户操作之后,不会停止自动轮播
+				},
 				loop:true,									// 循环
 				speed:500,									// 切换过程花费的时间
 				slidesPerView: "auto",			// 自适应显示 swiper-slide 的个数
@@ -704,25 +712,25 @@
 				slideToClickedSlide: true,	// 点击切换
 				pagination: {
 					el: '.customPagination ',
-					type:'custom',
 					clickable: true,
-					renderCustom: function (swiper, current, total) {
-						var domStr = '';
-						for(var i = 1; i <= total; i++){
-							if(current == i){
-								domStr += '<span class="inlineBlock pagination pagination' + i + ' paginationActive"></span>';
-							}else{
-								domStr += '<span class="inlineBlock pagination pagination' + i + '"></span>';
-							}
-						};
-						return domStr;
-					}
 				},
-			});
+			}); 
+			 $(".swiper-pagination-bullet").hover(function() {
+          $(this).click(); 						//鼠标划上去之后，自动触发点击事件来模仿鼠标划上去的事件
+					mySwiper.autoplay.stop();
+      },function() {
+          mySwiper.autoplay.start();  //鼠标移出之后，自动轮播开启
+      })
+
 		// 页面滚动控制文字标题等显示动效 --------------- 开始 -----------------------
+			var isBigScreen = false;
+			var winHeight = $(window).height();
+			if(winHeight > 1200){
+				isBigScreen = true;
+			};
 			$(document).scroll(function(e){
 				var scrollTop = $(document).scrollTop();
-				$('.num').html(scrollTop);
+				$('.num').html(scrollTop + '   ' + winHeight);
 				// header 背景色控制
 				if(scrollTop > 48){
 					$('.header').css({
@@ -733,8 +741,8 @@
 						'background-color':'#000',
 					})
 				};
-				// 文字标题显示控制
-				if(scrollTop >= 0 && scrollTop < 700 && !$('.bannerBigTitle').hasClass('titlesTransformActive')){
+				// 文字标题显示控制 (这里以屏幕高度 1200px 为界，区分两种触发区间)
+				if(((scrollTop >= 0 && scrollTop < 700 && !isBigScreen) || (scrollTop >= 0 && scrollTop < 720 && isBigScreen)) && !$('.bannerBigTitle').hasClass('titlesTransformActive')){
 					$('.bannerBigTitle').addClass('titlesTransformActive');
 					setTimeout(function(){
 						$('.bannerMidTitle').addClass('titlesTransformActive');
@@ -745,7 +753,7 @@
 					},200);
 					$('.bannerDarkBgBox').fadeOut(1600);
 				};
-				if(scrollTop >= 800 && scrollTop <= 1600 && !$('.safeBigTitle').hasClass('titlesTransformActive')){
+				if(((scrollTop >= 800 && scrollTop <= 1600 && !isBigScreen) || (scrollTop >= 800 && scrollTop <= 1240 && isBigScreen)) && !$('.safeBigTitle').hasClass('titlesTransformActive')){
 					$('.safeBigTitle').addClass('titlesTransformActive');
 					setTimeout(function(){
 						$('.safeMidTitle').addClass('titlesTransformActive');
@@ -754,13 +762,13 @@
 						$('.safePointBox').addClass('titlesTransformActive');
 					},400);
 				};
-				if(scrollTop >= 1450 && scrollTop <= 2060 && !$('.privateBigTitle').hasClass('titlesTransformActive')){
+				if(((scrollTop >= 1450 && scrollTop <= 2060 && !isBigScreen) || (scrollTop >= 1450 && scrollTop <= 2400 && isBigScreen)) && !$('.privateBigTitle').hasClass('titlesTransformActive')){
 					$('.privateBigTitle').addClass('titlesTransformActive');
 					setTimeout(function(){
 						$('.privateMidTitle').addClass('titlesTransformActive');
 					},200);
 				};
-				if(scrollTop >= 2520 && scrollTop <= 3500 && !$('.allPlatformBigTitle').hasClass('titlesTransformActive')){
+				if(((scrollTop >= 2520 && scrollTop <= 3500 && !isBigScreen) || (scrollTop >= 2520 && scrollTop <= 3500 && isBigScreen)) && !$('.allPlatformBigTitle').hasClass('titlesTransformActive')){
 					$('.allPlatformBigTitle').addClass('titlesTransformActive');
 					setTimeout(function(){
 						$('.allPlatformMidTitle').addClass('titlesTransformActive');
@@ -776,22 +784,22 @@
 						});
 						$('.allPlatformImg0').css({
 							'opacity':'1',
-							'transition': 'opacity 1.4s',
-							'-webkit-transition': 'opacity 1.4s',
-							'-moz-transition': 'opacity 1.4s',
-							'-ms-transition': 'opacity 1.4s',
-							'-o-transition': 'opacity 1.4s',
+							'transition': 'opacity 2s',
+							'-webkit-transition': 'opacity 2s',
+							'-moz-transition': 'opacity 2s',
+							'-ms-transition': 'opacity 2s',
+							'-o-transition': 'opacity 2s',
 						});
 					},400);
 				};
-				if(scrollTop >= 3600 && scrollTop <= 4700 && !$('.powerfulBigTitle').hasClass('titlesTransformActive')){
+				if(((scrollTop >= 3600 && scrollTop <= 4700 && !isBigScreen) || (scrollTop >= 3600 && scrollTop <= 4700 && isBigScreen)) && !$('.powerfulBigTitle').hasClass('titlesTransformActive')){
 					$('.powerfulBigTitle').addClass('titlesTransformActive');
 					setTimeout(function(){
 						$('.powerfulMidTitle').addClass('titlesTransformActive');
 					},200);
 					mySwiper.autoplay.start();
 				};
-				if(scrollTop >= 4700 && scrollTop <= 5700 && !$('.mojaveBigTitle').hasClass('titlesTransformActive')){
+				if(((scrollTop >= 4700 && scrollTop <= 5700 && !isBigScreen) || (scrollTop >= 4700 && scrollTop <= 5700 && isBigScreen)) && !$('.mojaveBigTitle').hasClass('titlesTransformActive')){
 					$('.mojaveBigTitle').addClass('titlesTransformActive');
 					setTimeout(function(){
 						$('.mojaveMidTitle').addClass('titlesTransformActive');
@@ -807,7 +815,7 @@
 						}
 					},18);	
 				};
-				if(scrollTop >= 5670 && !$('.electricBigTitle').hasClass('titlesTransformActive')){
+				if(((scrollTop >= 5670 && !isBigScreen) || (scrollTop >= 5670 && isBigScreen)) && !$('.electricBigTitle').hasClass('titlesTransformActive')){
 					$('.electricBigTitle').addClass('titlesTransformActive');
 					setTimeout(function(){
 						$('.electricMidTitle').addClass('titlesTransformActive');
@@ -850,13 +858,15 @@
 					}
 				};
 					// 视频播放
-				if(scrollTop >= 5970 && !isVideoPlayed){
+				if(((scrollTop >= 5970 && !isBigScreen) || (scrollTop >= 5970 && isBigScreen)) && !isVideoPlayed){
 					document.getElementById("video").play();
 					isVideoPlayed = true;
 				};
 			})
 			var isVideoPlayed = false;
-			$(document).trigger('scroll');
+			$(document).ready(function(){
+				$(this).trigger('scroll');
+			});
 		// 页面滚动控制文字标题等显示动效 --------------- 结束 -----------------------	
 		
 		// banner 流星效果-----------------------开始------------------------------
