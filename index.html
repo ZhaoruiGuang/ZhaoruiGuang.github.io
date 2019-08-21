@@ -285,6 +285,7 @@
 				margin: -50px auto 0;
 				display: flex;
 				justify-content:space-around;
+				opacity: 0;
 			}
 			.point .circle{
 				width: 68px;
@@ -313,7 +314,6 @@
 			}
 			.allPlatformPointBox{
 				margin-top: 48px;
-				opacity: 0;
 			}
 			.allPlatformPointBox .circle{
 				width: 60px;
@@ -537,7 +537,7 @@
 					360极速浏览器 | Mac版
 				</h1>
 				<span class="tabBox fr inlineBlock">
-					<a href="" class="links fl num" style="color: green;font-weight: bold;"></a>
+					<!-- <a href="" class="links fl num" style="color: green;font-weight: bold;"></a> -->
 					<a class="links fl" href="https://bbs.360.cn/forum-7583-1.html" target="_blank">论坛</a>
 					<a class="links fl" href="https://ext.chrome.360.cn/" target="_blank">扩展</a>
 					<a class="links fl" href="http://down.360safe.com/cse/360Browser_for_mac_qiangpiao.dmg" target="_blank">抢票专版</a>
@@ -563,7 +563,7 @@
 				<p class="safeBigTitle bigTitleWord alineCenter titlesTransformDefault">安全，你无需担忧。</p>
 				<p class="safeMidTitle midTitleWord alineCenter titlesTransformDefault">隐私与安全不该只是期望，我们为您提供优质的安保措施，避免诱骗网站和危险网站的侵害，打造轻松畅游丰富的网络世界；不仅如此，崭新的Mac版极速浏览器采用多种安全技术捍卫您的网上隐私与安全。</p>
 			</div>
-			<div class="pointBox safePointBox titlesTransformDefault">
+			<div class="pointBox safePointBox">
 				<span class="point inlineBlock">
 					<span class="circle block"><img src="http://p6.qhimg.com/t0130e9e278186b747b.png" alt="网站隔离"></span>
 					<p class="word">网站隔离</p>
@@ -619,7 +619,7 @@
 		</div>
 		<div class="powerfulBox overHidden">
 			<p class="powerfulBigTitle bigTitleWord alineCenter titlesTransformDefault">强大、个性，从不将就。</p>
-			<p class="powerfulMidTitle midTitleWord alineCenter titlesTransformDefault">无需科学上网，便可拥有数万款功能扩展，根据您的喜好及需求随意添加，打造属于你的强大浏览体验。 明星工具（购物比价、视频下载、广告拦截、抢票、截图）</p>
+			<p class="powerfulMidTitle midTitleWord alineCenter titlesTransformDefault">无需科学上网，便可拥有数万款功能扩展，根据您的喜好及需求随意添加，打造属于你的强大浏览体验。 明星工具（购物比价、视频下载、广告拦截、抢票、截图）。</p>
 			<div class="swiper-container" id="swiper">
 				<div class="swiper-wrapper">
 					<div class="swiper-slide">
@@ -739,7 +739,7 @@
 			var isVideoPlayed = false;				// 视频是否播放
 			$(document).scroll(function(e){
 				var scrollTop = $(document).scrollTop();
-				$('.num').html(scrollTop + '   ' + winHeight);
+				// $('.num').html(scrollTop + '   ' + winHeight);
 				// header 背景色控制
 				if(scrollTop > 48){
 					$('.header').css({
@@ -768,7 +768,14 @@
 						$('.safeMidTitle').addClass('titlesTransformActive');
 					},200);
 					setTimeout(function(){
-						$('.safePointBox').addClass('titlesTransformActive');
+						$('.safePointBox').css({
+							'opacity':'1',
+							'transition': 'opacity 1.4s',
+							'-webkit-transition': 'opacity 1.4s',
+							'-moz-transition': 'opacity 1.4s',
+							'-ms-transition': 'opacity 1.4s',
+							'-o-transition': 'opacity 1.4s',
+						});
 					},400);
 				};
 				if(((scrollTop >= 1470 && scrollTop <= 2080 && !isBigScreen) || (scrollTop >= 1060 && scrollTop <= 2160 && isBigScreen)) && !$('.privateBigTitle').hasClass('titlesTransformActive')){
