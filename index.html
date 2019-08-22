@@ -301,6 +301,9 @@
 				color:#999;
 				text-align: center;
 			}
+			.privateBox{
+				padding-bottom: 100px;
+			}
 			.privateBigTitle{
 				margin: 210px auto 0;
 			}
@@ -308,9 +311,13 @@
 				width: 813px;
 				height: 478px;
 				margin: 72px auto 0;
+				opacity: 0;
+				position: relative;
+				top:80px;
 			}
 			.allPlatformBigTitle{
-				margin: 260px auto 0;
+				/* margin: 260px auto 0; */
+				margin: 160px auto 0;
 			}
 			.allPlatformPointBox{
 				margin-top: 48px;
@@ -590,7 +597,7 @@
 		<div class="privateBox overHidden">
 			<p class="privateBigTitle bigTitleWord alineCenter titlesTransformDefault">踏网无痕，私人浏览。</p>
 			<p class="privateMidTitle midTitleWord alineCenter titlesTransformDefault">浏览的历史记录不想被发现？打开无痕浏览模式，将不会记录任何访问过的网页、搜索历史或“自动填充”，让您做到真正的无痕浏览不透足迹，保护您的网上隐私。</p>
-			<img class="privateImg block titlesTransformDefault" src="http://p8.qhimg.com/t015c209683c94b19cd.png" alt="踏网无痕，私人浏览">
+			<img class="privateImg block" src="http://p8.qhimg.com/t015c209683c94b19cd.png" alt="踏网无痕，私人浏览">
 		</div>
 		<div class="allPlatformBox overHidden">
 			<p class="allPlatformBigTitle bigTitleWord alineCenter titlesTransformDefault">全平台同步，无缝畅游。</p>
@@ -793,8 +800,16 @@
 						$('.privateMidTitle').addClass('titlesTransformActive');
 					},200);
 				};
-				if(((scrollTop >= 1600 && scrollTop <= 2500 && !isBigScreen) || (scrollTop >= 1480 && scrollTop <= 2400 && isBigScreen)) && !isPrivateImgShow){
-					$('.privateImg').addClass('titlesTransformActive');
+				if(((scrollTop >= 1600 && scrollTop <= 2500 && !isBigScreen) || (scrollTop >= 1330 && scrollTop <= 2700 && isBigScreen)) && !isPrivateImgShow){
+					$('.privateImg').css({
+						'opacity':'1',
+						'top':'0',
+						'transition': 'opacity 1.4s,top 1.4s',
+						'-webkit-transition': 'opacity 1.4s,top 1.4s',
+						'-moz-transition': 'opacity 1.4s,top 1.4s',
+						'-ms-transition': 'opacity 1.4,top 1.4ss',
+						'-o-transition': 'opacity 1.4s,top 1.4s',
+					});
 					isPrivateImgShow = true;
 				};
 				if(((scrollTop >= 2420 && scrollTop <= 3220 && !isBigScreen) || (scrollTop >= 2060 && scrollTop <= 3220 && isBigScreen)) && !$('.allPlatformBigTitle').hasClass('titlesTransformActive')){
