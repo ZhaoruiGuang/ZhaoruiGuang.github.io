@@ -526,6 +526,11 @@
 			.footer a{
 				color: #666666;
 			}
+			@media screen and (max-width:1400px) {
+				.bigTitleWord{
+					font-size: 60px;
+				}
+			}
 		</style>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/css/swiper.min.css">
 	</head>
@@ -537,7 +542,7 @@
 					360极速浏览器 | Mac版
 				</h1>
 				<span class="tabBox fr inlineBlock">
-					<!-- <a href="" class="links fl num" style="color: green;font-weight: bold;"></a> -->
+					<a href="" class="links fl num" style="color: green;font-weight: bold;"></a>
 					<a class="links fl" href="https://bbs.360.cn/forum-7583-1.html" target="_blank">论坛</a>
 					<a class="links fl" href="https://ext.chrome.360.cn/" target="_blank">扩展</a>
 					<a class="links fl" href="http://down.360safe.com/cse/360Browser_for_mac_qiangpiao.dmg" target="_blank">抢票专版</a>
@@ -585,7 +590,7 @@
 		<div class="privateBox overHidden">
 			<p class="privateBigTitle bigTitleWord alineCenter titlesTransformDefault">踏网无痕，私人浏览。</p>
 			<p class="privateMidTitle midTitleWord alineCenter titlesTransformDefault">浏览的历史记录不想被发现？打开无痕浏览模式，将不会记录任何访问过的网页、搜索历史或“自动填充”，让您做到真正的无痕浏览不透足迹，保护您的网上隐私。</p>
-			<img class="privateImg block" src="http://p8.qhimg.com/t015c209683c94b19cd.png" alt="踏网无痕，私人浏览">
+			<img class="privateImg block titlesTransformDefault" src="http://p8.qhimg.com/t015c209683c94b19cd.png" alt="踏网无痕，私人浏览">
 		</div>
 		<div class="allPlatformBox overHidden">
 			<p class="allPlatformBigTitle bigTitleWord alineCenter titlesTransformDefault">全平台同步，无缝畅游。</p>
@@ -737,12 +742,13 @@
 			if(winHeight > 1200){
 				isBigScreen = true;
 			};
+			var isPrivateImgShow = false;			// 无痕模式模块图片是否已显示
 			var isAllplatformMacShow = false;	// 全平台模块电脑图片是否已显示
 			var isMojaveAnimated = false;			// mojave 模块动效是否执行
 			var isVideoPlayed = false;				// 视频是否播放
 			$(document).scroll(function(e){
 				var scrollTop = $(document).scrollTop();
-				// $('.num').html(scrollTop + '   ' + winHeight);
+				$('.num').html(scrollTop + '   ' + winHeight);
 				// header 背景色控制
 				if(scrollTop > 48){
 					$('.header').css({
@@ -786,6 +792,10 @@
 					setTimeout(function(){
 						$('.privateMidTitle').addClass('titlesTransformActive');
 					},200);
+				};
+				if(((scrollTop >= 1600 && scrollTop <= 2500 && !isBigScreen) || (scrollTop >= 1480 && scrollTop <= 2400 && isBigScreen)) && !isPrivateImgShow){
+					$('.privateImg').addClass('titlesTransformActive');
+					isPrivateImgShow = true;
 				};
 				if(((scrollTop >= 2420 && scrollTop <= 3220 && !isBigScreen) || (scrollTop >= 2060 && scrollTop <= 3220 && isBigScreen)) && !$('.allPlatformBigTitle').hasClass('titlesTransformActive')){
 					$('.allPlatformBigTitle').addClass('titlesTransformActive');
