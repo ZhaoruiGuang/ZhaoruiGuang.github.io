@@ -400,7 +400,6 @@
 				margin-top: 60px;
 				height: 20px;
 			}
-			
 			.customPagination .swiper-pagination-bullet{
 				display: inline-block;
 				width:110px;
@@ -478,11 +477,23 @@
 				height: 580px;
 				background:#1b1b1d;
 				margin: 64px auto 0;
-				padding-top: 60px;
+				position: relative;
+				top: 0;
+				left: 0;
+			}
+			.video{
+				position: absolute;
+				bottom:0;
+				left: 0;
+				z-index: 1;
 			}
 			.paramBox{
 				width: 480px;
 				padding-top: 56px;
+				position: absolute;
+				top:60px;
+				right: 0;
+				z-index: 2;
 			}
 			.paramTitle{
 				font-size:18px;
@@ -533,9 +544,42 @@
 			.footer a{
 				color: #666666;
 			}
-			@media screen and (max-width:1400px) {
+			@media screen and (max-width:1440px) {
 				.bigTitleWord{
-					font-size: 60px;
+					font-size: 52px;
+					line-height:72px;
+				}
+				.midTitleWord{
+					font-size: 16px;
+					line-height:26px;
+					margin-top:16px;
+				}
+				.bannerBox,.bannerDarkBgBox{
+					/* height: 864px; */
+					height: 900px;
+					background-size: cover;
+					background-position: bottom center;
+				}
+				.bannerContent{
+					padding-top: 140px;
+				}
+				.safeBox{
+					padding: 108px 0;
+				}
+				.privateBox{
+					margin: 40px 0;
+				}
+				.allPlatformBox{
+					margin: 40px 0;
+				}
+				.powerfulBox{
+					margin: 136px auto 40px;
+				}
+				.mojaveBox{
+					margin: 40px 0;
+				}
+				.electricBox{
+					margin: 40px 0;
 				}
 			}
 		</style>
@@ -688,9 +732,9 @@
 		</div>
 		<div class="electricBox overHidden">
 			<p class="electricBigTitle bigTitleWord alineCenter titlesTransformDefault">省电模式，提高浏览器的续航力。</p>
-			<p class="electricMidTitle midTitleWord alineCenter titlesTransformDefault">跟随MacOS Mojave系统智能切换，并配有多款内置精美皮肤。高颜值，更加独特。</p>
+			<p class="electricMidTitle midTitleWord alineCenter titlesTransformDefault">省电模式会根据笔记本电量，进行智能优化帮助电脑节能，可提高多达50%的使用时长。</p>
 			<div class="electricVideoBox">
-				<video width="520" height="520" class="video" id="video" src="http://s3.qhres.com/static/e21bd90a1027f19e.mp4" preload muted>
+				<video width="1000" height="580" class="video" id="video" src="http://s9.qhres.com/static/20f784ef6aa12a35.mp4" preload muted>
 					当前浏览器不支持 video 直接播放
 				</video>
 				<div class="paramBox inlineBlock fr">
