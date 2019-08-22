@@ -581,6 +581,41 @@
 				.electricBox{
 					margin: 40px 0;
 				}
+				@keyframes starAnimation1{
+					0%   {top:65px;left: 55%;opacity:1;}
+					25%  {top:165px;left: 44%;opacity:1;}
+				  50%  {top:265px;left: 33%;opacity:1;}
+				  75%  {top:365px;left: 22%;opacity:1;}
+				  100% {top:465px;left: 11%;opacity:0;}
+				}
+				@-webkit-keyframes starAnimation1{
+					0%   {top:65px;left: 55%;opacity:1;}
+					25%  {top:165px;left: 44%;opacity:1;}
+				  50%  {top:265px;left: 33%;opacity:1;}
+				  75%  {top:365px;left: 22%;opacity:1;}
+				  100% {top:465px;left: 11%;opacity:0;}
+				}
+				@-moz-keyframes starAnimation1{
+					0%   {top:65px;left: 55%;opacity:1;}
+					25%  {top:165px;left: 44%;opacity:1;}
+				  50%  {top:265px;left: 33%;opacity:1;}
+				  75%  {top:365px;left: 22%;opacity:1;}
+				  100% {top:465px;left: 11%;opacity:0;}
+				}
+				@-ms-keyframes starAnimation1{
+					0%   {top:65px;left: 55%;opacity:1;}
+					25%  {top:165px;left: 44%;opacity:1;}
+				  50%  {top:265px;left: 33%;opacity:1;}
+				  75%  {top:365px;left: 22%;opacity:1;}
+				  100% {top:465px;left: 11%;opacity:0;}
+				}
+				@-o-keyframes starAnimation1{
+					0%   {top:65px;left: 55%;opacity:1;}
+					25%  {top:165px;left: 44%;opacity:1;}
+				  50%  {top:265px;left: 33%;opacity:1;}
+				  75%  {top:365px;left: 22%;opacity:1;}
+				  100% {top:465px;left: 11%;opacity:0;}
+				}
 			}
 		</style>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/css/swiper.min.css">
@@ -593,7 +628,7 @@
 					360极速浏览器 | Mac版
 				</h1>
 				<span class="tabBox fr inlineBlock">
-					<a href="" class="links fl num" style="color: green;font-weight: bold;"></a>
+					<!-- <a href="" class="links fl num" style="color: green;font-weight: bold;"></a> -->
 					<a class="links fl" href="https://bbs.360.cn/forum-7583-1.html" target="_blank">论坛</a>
 					<a class="links fl" href="https://ext.chrome.360.cn/" target="_blank">扩展</a>
 					<a class="links fl" href="http://down.360safe.com/cse/360Browser_for_mac_qiangpiao.dmg" target="_blank">抢票专版</a>
@@ -799,7 +834,7 @@
 			var isVideoPlayed = false;				// 视频是否播放
 			$(document).scroll(function(e){
 				var scrollTop = $(document).scrollTop();
-				$('.num').html(scrollTop + '   ' + winHeight);
+				// $('.num').html(scrollTop + '   ' + winHeight);
 				// header 背景色控制
 				if(scrollTop > 48){
 					$('.header').css({
