@@ -7,10 +7,9 @@
     <!-- <link rel="stylesheet" href="https://s.ssl.qhres.com/static/7e594d1c09c4dc64/style.css"> -->
 		<style type="text/css">
 			html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,i,center,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,audio,canvas,details,figcaption,figure,footer,header,hgroup,mark,menu,meter,nav,output,progress,section,summary,time,video{font-family:"Microsoft YaHei","\5fae\8f6f\96c5\9ed1",Helvetica,Arial,sans-serif;margin:0;padding:0}
-			body{
-				height:1066px;
-				min-width:1024px;
-				position:relative;
+			html,body{
+				width: 100%;
+				height: 100%;
 				background-color: #000000;
 				overflow: hidden;
 			}
@@ -18,54 +17,58 @@
 				display: block;
 				width: 100%;
 				height: 100%;
+				cursor: initial;
 				text-decoration: none;
-			}
-			.content{
-				width: 1540px;
-				height: 900px;
-				margin: 0 auto;
 				background-image:url(https://p0.ssl.qhimg.com/t016e2682be1d885075.png);
+				background-size: 80% auto;
 				background-repeat: no-repeat;
 				background-position:center;
-				background-repeat:no-repeat;
-				position: relative;
-				top: 0;
-				left: 0;
-				overflow: hidden;
+			}
+			.header{
+				width: 1540px;
+				height: 50px;
+				margin: 0 auto;
+				background-color: transparent;
 			}
 			.logo{
 				display: block;
 				width: 160px;
 				height: 28px;
+				float: left;
+				margin-top: 10px;
+			}
+			.wordBox{
+				display: block;
+				width: 100%;
+				height: 126px;
+				color: #fff;
+				text-align: center;
 				position: absolute;
-				top:10px;
-				left: 0;
+				top: 50%;
+				margin-top: -63px;
 			}
 			.title{
-				color: #fff;
 				font-size: 70px;
 				line-height: 92px;
-				margin-top: 386px;
-				text-align: center;
 			}
 			.desc{
-				color: #fff;
 				font-size: 20px;
 				line-height: 26px;
 				margin-top: 8px;
-				text-align: center;
 			}
-			
 		</style>
 </head>
 <body>
 	<!-- <a href="https://browser.360.cn/ee/" class="container" target="_blank"> -->
-		<div class="content">
+	<a href="javascript:;" class="container" target="_blank">
+		<div class="header">
 			<img class="logo" src="https://p5.ssl.qhimg.com/t01e2879d675f7f8e98.png" alt="">
-			<p class="title">Chromium 78</p>
-			<p class="desc">极速12，畅快浏览，极致体验。</p>
 		</div>
-	<!-- </a> -->
+		<div class="wordBox">
+			<div class="title">Chromium 78</div>
+			<div class="desc">极速12，畅快浏览，极致体验。</div>
+		</div>
+	</a>
    
 	<script src="https://s4.ssl.qhimg.com/!b8eacd94/jq183.js"></script>
 	<script type="text/javascript">$(window).load(function(){var e=$(window).height();e<1066||$("body").height(e);var t=$(window).width(),n=$(".enters").width()/2;if(e<550){var r=t/2-n;$(".enters").css({position:"static","margin-left":r})}}),$(window).resize(function(){var e=$(window).height(),t=$(window).width(),n=$(".enters").width()/2;if(e<550){var r=t/2-n;$(".enters").css({position:"static","margin-left":r})}else $(".enters").css({position:"fixed","margin-left":""})})</script>
