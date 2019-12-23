@@ -352,6 +352,8 @@ img{
 
 
 .chromiumBox{
+	max-width: 1920px;
+	margin: 0 auto;
 	padding: 115px 0 103px 0;
 }
 .chromiumBoxContent{
@@ -501,7 +503,14 @@ img{
 }
 .safeTabNum{
 	font-size: 50px;
-	font-family: fzltTH;
+	/* font-family: fzltTH; */
+	font-weight: bold;
+}
+.safeTabNum span{
+	font-size: 54px;
+	position: relative;
+	top: 1px;
+	margin-right: 2px;
 }
 .safeLine{
 	width: 1px;
@@ -560,6 +569,33 @@ img{
 	-webkit-transform: none;
 	-o-transform: none;
 	-ms-transform: none;
+}
+
+/* 大分辨率的各内容都是固定尺寸,不走计算 */
+@media screen and (min-width:1921px){
+	.bigScreen .toolContent{
+		width: 958px !important;
+		height: 538px !important;
+	}
+	.bigScreen .toolTabs{
+		width: 990px !important;
+	}
+	.bigScreen .tabVideo{
+		margin: 0 218px 0 93px !important;
+	}
+	.bigScreen .tabTools{
+		margin: 0 218px 0 !important;
+	}
+	.bigScreen .chromiumTitle{
+		margin-top: 20.5%;
+	}
+	.bigScreen .swiper-container{
+		height: 509px !important;
+	}
+	.bigScreen .swiper-container .swiper-wrapper .swiper-slide{
+		width: 900px !important;
+		height: 509px !important;
+	}
 }
 		</style>
 		
@@ -666,7 +702,7 @@ img{
 							<div class="tabIcon tabIconGame"></div>
 							<p class="tabDes">游戏</p>
 						</span>
-						<span class="inlineBlock clearfix"></span>
+						<span class="clearfix"></span>
 					</div>
 				</div>
 			</li>
@@ -756,6 +792,14 @@ img{
 	<script type="text/javascript">
 		var winWidth = $(window).width();
 		var winHeight = $(window).height();
+		var isBigScreen = false;
+		if(winWidth > 1920){
+			isBigScreen = true;
+			$('body').addClass('bigScreen');
+		}else{
+			isBigScreen = false;
+			$('body').removeClass('bigScreen');
+		};
 		var browser={
 		  versions:function(){
 		    var u = navigator.userAgent;
@@ -820,11 +864,10 @@ img{
 				};
 				$('.popImg').eq(toolNum).addClass('popImgShow').siblings().removeClass('popImgShow');
 				$('.tab').eq(toolNum).addClass('activeTab').siblings().removeClass('activeTab');
-			},3000);
+			},30000);
 		};
 		
 		$('.tab').on('click',function(e){
-			console.log('11111111111111')
 			clearInterval(toolInterval);
 			var tabIndex = $(this).index();
 			toolNum = tabIndex;
@@ -891,7 +934,7 @@ img{
 				}else{
 					lastEndScrollTop = scrollTop;
 				}
-			},200);
+			},300);
 			
 			// $('#scroo').html(scrollTop)
 			// 文字 title 渐进显示：
@@ -986,14 +1029,31 @@ img{
 	
 		// 窗口大小变化，重新计算一些值
 		window.onresize = function(){
+			console.log('resize')
 			winWidth = $(window).width();
 			winHeight = $(window).height();
+			if(winWidth > 1920){
+				isBigScreen = true;
+				$('body').addClass('bigScreen');
+			}else{
+				isBigScreen = false;
+				$('body').removeClass('bigScreen');
+			};
 			if(!browser.versions().trident){	// 非 IE
 				setSwiperSlideSize();		
 			}else{
 				setIeStyle();
 			};
-			setToolTabMargin();
+			setToolTabMargin();  
+			
+			// 保持第一屏和第二屏里图片大小相同
+			var toolContentW = $('.toolContent').width();
+			var toolContentH = $('.toolContent').height();
+			$('.bannerImg').css({
+				width:toolContentW,
+				height:toolContentH,
+			})
+			
 		};
 		// 计算 第二屏小程序切换 tab 之间的间距
 		function setToolTabMargin(){
