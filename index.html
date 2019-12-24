@@ -320,10 +320,10 @@ img{
 	cursor: pointer;
 }
 .tabVideo{
-	margin: 0 218px 0 93px;
+	margin: 0 217px 0 93px;
 }
 .tabTools{
-	margin: 0 218px 0;
+	margin: 0 217px 0;
 }
 .tabIcon{
 	display: block;
@@ -587,10 +587,10 @@ img{
 		width: 990px !important;
 	}
 	.bigScreen .tabVideo{
-		margin: 0 218px 0 93px !important;
+		margin: 0 217px 0 93px !important;
 	}
 	.bigScreen .tabTools{
-		margin: 0 218px 0 !important;
+		margin: 0 217px 0 !important;
 	}
 	.bigScreen .swiper-container{
 		height: 509px !important;
@@ -738,7 +738,7 @@ img{
 			<p class="skinTitle alineCenter bigTitleWord titlesTransformDefault">颜值时代，浏览器皮肤也不能输</p>
 			<p class="skinTips mt-20 midTitleWord alineCenter titlesTransformDefault">耳目一新的设计，高清精美的壁纸，让你上网时更添一份好心情</p>
 			
-			<div class="swiper-container ieHidden" id="swiper">
+			<div class="swiper-container ieHidden titlesTransformDefault" id="swiper">
 				<div class="swiper-wrapper">
 					<div class="swiper-slide">
 						<img class="item" src="https://p1.ssl.qhimg.com/t018c4db4632fc1449f.png" alt="浏览器皮肤1">
@@ -763,7 +763,7 @@ img{
 					</div>
 				</div>
 			</div>
-			<div class="customPagination ieHidden alineCenter"></div>
+			<div class="customPagination ieHidden alineCenter titlesTransformDefault"></div>
 			
 			<img class="ieImg" src="https://p0.ssl.qhimg.com/t01f9e2beb85c34381b.png" alt="">
 		</div>
@@ -998,6 +998,10 @@ img{
 				setTimeout(function(){
 					$('.skinTips').addClass('titlesTransformActive');
 				},200);
+				setTimeout(function(){
+					$('.swiper-container').addClass('titlesTransformActive');
+					$('.customPagination').addClass('titlesTransformActive');
+				},300)
 			};
 			if(safeTitleTop <= scrollTop + winHeight - 200 && !$('.safeTitle').hasClass('titlesTransformActive')){
 				$('.safeTitle').addClass('titlesTransformActive');
@@ -1083,11 +1087,11 @@ img{
 		function setToolTabMargin(){
 			var toolTabsWidth = $('.toolTabs').width();
 			$('.tabVideo').css({
-				'margin-right': (toolTabsWidth - 346) /3 + 'px',
+				'margin-right': (toolTabsWidth - 350) / 3 + 'px',
 			});
 			$('.tabTools').css({
-				'margin-left': (toolTabsWidth - 346) /3 + 'px',
-				'margin-right': (toolTabsWidth - 346) /3 + 'px',
+				'margin-left': (toolTabsWidth - 350) / 3 + 'px',
+				'margin-right': (toolTabsWidth - 350) / 3 + 'px',
 			})
 		};
 		// 计算 swiper-slide 的宽高
