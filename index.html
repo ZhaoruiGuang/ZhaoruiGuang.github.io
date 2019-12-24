@@ -195,8 +195,8 @@ img{
 }
 .smallProgram{
 	display: block;
-	margin-top: 80px;
 	width: 100%;
+	padding-top: 80px;
 }
 .stickyTwoScreen{
 	height: 200vh;
@@ -311,7 +311,7 @@ img{
 	-o-transition: opacity 1s;
 }
 .toolTabs{
-	margin: 20px auto 0;
+	margin: 25px auto 0;
 }
 .tab{
 	width: 40px;
@@ -328,27 +328,30 @@ img{
 }
 .tabIcon{
 	display: block;
-	width: 40px;
-	height: 42px;
+	width: 36px;
+	height: 38px;
 	margin: 0 auto 15px;
-	background-size: 86px 40px;
+	background-size: 120px 36px;
 	background-repeat: no-repeat;
 	background-position: 0 0;
 }
 .tabIconVideo{
-	background-image: url('https://p2.ssl.qhimg.com/t0148604d2f911384cd.png');
+	background-image: url('https://p5.ssl.qhimg.com/t01197c46668096bc0b.png');
 }
 .tabIconTools{
-	background-image: url('https://p2.ssl.qhimg.com/t01e0ed220ddb7f5132.png');
+	background-image: url('https://p5.ssl.qhimg.com/t01bd0fbc01a22aaffd.png');
 }
 .tabIconNews{
-	background-image: url('https://p3.ssl.qhimg.com/t011a17d47e2566841a.png');
+	background-image: url('https://p5.ssl.qhimg.com/t01aeaa6b24e4d4c2a3.png');
 }
 .tabIconGame{
-	background-image: url('https://p3.ssl.qhimg.com/t01119650f67e64e6a4.png');
+	background-image: url('https://p2.ssl.qhimg.com/t013c26968c715bef55.png');
+}
+.tabIcon:hover{
+	background-position: -42px 0;
 }
 .activeTab .tabIcon{
-	background-position: -46px 0;
+	background-position: -84px 0;
 }
 
 
@@ -678,7 +681,7 @@ img{
 			</div>
 		</div>
 		<ul id="smallProgram" class="smallProgram screenHeight">
-			<li class="smallProgramContentLi screenHeight">
+			<li class="smallProgramContentLi">
 				<div class="smallProgramContent">
 					<p class="smallProgramTitle alineCenter bigTitleWord titlesTransformDefault">小程序，新连接，全场景</p>
 					<p class="smallProgramDes alineCenter midTitleWord titlesTransformDefault">融合内容、服务、工具、视频、资讯等丰富小程序，全新 PC 使用体验，精彩世界，快速触达</p>
@@ -869,7 +872,7 @@ img{
 				};
 				$('.popImg').eq(toolNum).addClass('popImgShow').siblings().removeClass('popImgShow');
 				$('.tab').eq(toolNum).addClass('activeTab').siblings().removeClass('activeTab');
-			},30000);
+			},3000);
 		};
 		
 		$('.tab').on('click',function(e){
@@ -1045,7 +1048,6 @@ img{
 	
 		// 窗口大小变化，重新计算一些值
 		window.onresize = function(){
-			console.log('resize')
 			winWidth = $(window).width();
 			winHeight = $(window).height();
 			if(winWidth > 1920){
@@ -1074,7 +1076,7 @@ img{
 					'height':'auto',
 					'min-height':winHeight,
 				});
-			};
+			}
 		};
 		setScreenHeight();
 		
@@ -1101,7 +1103,7 @@ img{
 			$('.tabTools').css({
 				'margin-left': (toolTabsWidth - 350) / 3 + 'px',
 				'margin-right': (toolTabsWidth - 350) / 3 + 'px',
-			})
+			});
 		};
 		setToolTabMargin();
 		
