@@ -206,8 +206,9 @@ img{
 }
 .smallProgramContentLi{
 	width: 100%;
-	position: sticky;
-	position: -webkit-sticky;
+	/* position: sticky;
+	position: -webkit-sticky; */
+	position: relative;
 	top: 0;
 }
 .smallProgramContent{
@@ -357,6 +358,7 @@ img{
 }
 .chromiumBoxContent{
 	height: 100%;
+	min-height: 400px;
 	background-image: url("https://p1.ssl.qhimg.com/t0120660e08f2a5db8e.jpg");
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -675,8 +677,9 @@ img{
 				<img class="bannerImg titlesTransformDefault" src="https://p5.ssl.qhimg.com/t01efc28ac5726fe780.png" alt="">
 			</div>
 		</div>
-		<ul id="smallProgram" class="smallProgram">
-			<li class="smallProgramContentLi screenHeight">
+		<ul id="smallProgram" class="smallProgram screenHeight">
+			<!-- <li class="smallProgramContentLi screenHeight"> -->
+			<li class="smallProgramContentLi">
 				<div class="smallProgramContent">
 					<p class="smallProgramTitle alineCenter bigTitleWord titlesTransformDefault">小程序，新连接，全场景</p>
 					<p class="smallProgramDes alineCenter midTitleWord titlesTransformDefault">融合内容、服务、工具、视频、资讯等丰富小程序，全新 PC 使用体验，精彩世界，快速触达</p>
@@ -841,12 +844,6 @@ img{
 			$('.screenHeight').css({				// 设置 100% 高度， === 100vh
 				'height':winHeight,
 			});
-			if(winHeight < 800){						// 屏幕分辨率高度太小时，让高度 auto，不再限制为一屏高度
-				$('.screenHeight').css({				
-					'height':'auto',
-					'min-height':winHeight,
-				});
-			};
 			$('.stickyTwoScreen').css({			// IE 不支持 sticky 粘性定位，所以设为一倍屏高，自由滑动即可
 				'height':winHeight,
 			});
@@ -901,6 +898,7 @@ img{
 		var chromiumTitleTop = null;
 		var platformTitleTop = null;
 		var skinTitleTop = null;
+		var swiperTop = null;
 		var safeTitleTop = null;
 		var scrollTop = null;
 		var beforeScrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;	// 上次滚动位置，，用于判断滚动方向：上或下
@@ -915,6 +913,7 @@ img{
 			chromiumTitleTop = $(".chromiumTitle").offset().top;
 			platformTitleTop = $(".platformTitle").offset().top;
 			skinTitleTop = $(".skinTitle").offset().top;
+			swiperTop = $('.swiper-container').offset().top;
 			safeTitleTop = $(".safeTitle").offset().top;
 			scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
 			
@@ -1009,6 +1008,11 @@ img{
 					$('.customPagination').addClass('titlesTransformActive');
 				},300)
 			};
+			if(swiperTop <= scrollTop + winHeight - 200 && swiperTop + 100 > scrollTop && !$('.swiper-container').hasClass('titlesTransformActive')){
+				$('.swiper-container').addClass('titlesTransformActive');
+				$('.customPagination').addClass('titlesTransformActive');
+			};
+			
 			if(safeTitleTop <= scrollTop + winHeight - 200 && !$('.safeTitle').hasClass('titlesTransformActive')){
 				$('.safeTitle').addClass('titlesTransformActive');
 				setTimeout(function(){
@@ -1057,10 +1061,23 @@ img{
 			}else{
 				setIeStyle();
 			};
+			setScreenHeight();
 			setToolTabMargin();  
 			setBannerImgHeight();
 			setChromiumTitleMargin();
+			setSafeContentHeight();
 		};
+		
+		// 设置内容高度
+		function setScreenHeight(){
+			if(winHeight < 800){						// 屏幕分辨率高度太小时，让高度 auto，不再限制为一屏高度
+				$('.screenHeight').css({				
+					'height':'auto',
+					'min-height':winHeight,
+				});
+			};
+		};
+		setScreenHeight();
 		
 		// 设置 banner 和第二屏方图的大小
 		function setBannerImgHeight(){
@@ -1076,6 +1093,19 @@ img{
 		};
 		setBannerImgHeight();
 		
+		// 计算 第二屏小程序切换 tab 之间的间距
+		function setToolTabMargin(){
+			var toolTabsWidth = $('.toolTabs').width();
+			$('.tabVideo').css({
+				'margin-right': (toolTabsWidth - 350) / 3 + 'px',
+			});
+			$('.tabTools').css({
+				'margin-left': (toolTabsWidth - 350) / 3 + 'px',
+				'margin-right': (toolTabsWidth - 350) / 3 + 'px',
+			})
+		};
+		setToolTabMargin();
+		
 		// 设置第三屏内核文字距离顶部的距离
 		function setChromiumTitleMargin(){
 			var chromiumBoxContentH = $('.chromiumBoxContent').height();
@@ -1089,18 +1119,13 @@ img{
 		};
 		setChromiumTitleMargin();
 		
-		// 计算 第二屏小程序切换 tab 之间的间距
-		function setToolTabMargin(){
-			var toolTabsWidth = $('.toolTabs').width();
-			$('.tabVideo').css({
-				'margin-right': (toolTabsWidth - 350) / 3 + 'px',
-			});
-			$('.tabTools').css({
-				'margin-left': (toolTabsWidth - 350) / 3 + 'px',
-				'margin-right': (toolTabsWidth - 350) / 3 + 'px',
+		function setSafeContentHeight(){
+			$('.safeBoxContent').css({
+				'height':winHeight - 48 - 170 + 'px',
 			})
 		};
-		setToolTabMargin();
+		setSafeContentHeight();
+		
 		// 计算 swiper-slide 的宽高
 		function setSwiperSlideSize(){
 			$('.swiper-container').css({
