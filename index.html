@@ -317,7 +317,7 @@ img{
 	width: 40px;
 	font-size: 16px;
 	line-height: 18px;
-	color: #4A4A4A;
+	color: #979797;
 	cursor: pointer;
 }
 .tabVideo{
@@ -347,14 +347,19 @@ img{
 .tabIconGame{
 	background-image: url('https://p2.ssl.qhimg.com/t013c26968c715bef55.png');
 }
-.tabIcon:hover{
+.tab:not(.activeTab):hover{
+	color: #C5C5C5;
+}
+.tab:not(.activeTab):hover .tabIcon{
 	background-position: -42px 0;
+}
+
+.activeTab{
+	color: #37D679;
 }
 .activeTab .tabIcon{
 	background-position: -84px 0;
 }
-
-
 
 .chromiumBox{
 	padding: 115px 0 103px 0;
@@ -606,7 +611,6 @@ img{
 	}
 }
 		</style>
-		
 		<script src="https://s0.ssl.qhimg.com/!d72afc4d/jquery-1.8.0.min.js"></script>
 		<!--[if (!IE)]> -->
 			<link rel="stylesheet" href="https://s3.ssl.qhres.com/static/8d3f6b1d532060b6.css">
