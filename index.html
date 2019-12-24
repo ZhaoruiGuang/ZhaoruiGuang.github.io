@@ -195,6 +195,7 @@ img{
 }
 .smallProgram{
 	display: block;
+	margin-top: 80px;
 	width: 100%;
 }
 .stickyTwoScreen{
@@ -231,7 +232,7 @@ img{
 	/* width: 958px;
 	height: 538px; */
 	width: 95.8%;
-	height: 67.2%;
+	/* height: 67.2%; */
 	margin: 0 auto;
 	/* background-image: url('https://p5.ssl.qhimg.com/t01efc28ac5726fe780.png');
 	background-size: auto 100%;
@@ -327,7 +328,7 @@ img{
 .tabIcon{
 	display: block;
 	width: 40px;
-	height: 40px;
+	height: 42px;
 	margin: 0 auto 15px;
 	background-size: 86px 40px;
 	background-repeat: no-repeat;
@@ -366,11 +367,10 @@ img{
 .chromiumTitle{
 	font-size: 34px;
 	line-height: 40px;
-	margin-top: 17.5%;
 }
 .chromiumTabs{
 	width: 570px;
-	margin: 4% auto 0;
+	margin: 0 auto;
 }
 .chromiumTab{
 	width: 110px;
@@ -573,6 +573,12 @@ img{
 
 /* 大分辨率的各内容都是固定尺寸,不走计算 */
 @media screen and (min-width:1921px){
+	.bigScreen .bannerContent{
+		height: 820px;
+		position: relative;
+		top:50%;
+		margin-top: -410px;
+	}
 	.bigScreen .toolContent{
 		width: 958px !important;
 		height: 538px !important;
@@ -585,9 +591,6 @@ img{
 	}
 	.bigScreen .tabTools{
 		margin: 0 218px 0 !important;
-	}
-	.bigScreen .chromiumTitle{
-		margin-top: 20.5%;
 	}
 	.bigScreen .swiper-container{
 		height: 509px !important;
@@ -672,7 +675,7 @@ img{
 				<img class="bannerImg titlesTransformDefault" src="https://p5.ssl.qhimg.com/t01efc28ac5726fe780.png" alt="">
 			</div>
 		</div>
-		<ul id="smallProgram" class="smallProgram stickyTwoScreen">
+		<ul id="smallProgram" class="smallProgram">
 			<li class="smallProgramContentLi screenHeight">
 				<div class="smallProgramContent">
 					<p class="smallProgramTitle alineCenter bigTitleWord titlesTransformDefault">小程序，新连接，全场景</p>
@@ -909,32 +912,32 @@ img{
 			safeTitleTop = $(".safeTitle").offset().top;
 			scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
 			
-			setTimeout(function(){
-				if(lastEndScrollTop == scrollTop){ // 判断一次滚动是否结束，结束后开始计算后续工作;200 毫秒内没有变化，则认定为滚动停止
-					// scrollTop > beforeScrollTop 为向下滚动 scrollTop < beforeScrollTop 为向上滚动
-					if(scrollTop > beforeScrollTop && scrollTop <= smallProgramTop && !isAnimatting){
-						isAnimatting = true;
-						$("html,body").animate({
-							'scrollTop':smallProgramTop,
-						},300);
-						setTimeout(function(){
-							beforeScrollTop = smallProgramTop;
-							isAnimatting = false;
-						},500);
-					}else if(scrollTop < beforeScrollTop && scrollTop < smallProgramTop - 50  && !isAnimatting){
-						isAnimatting = true;
-						$("html,body").animate({
-							'scrollTop':0,
-						},300);
-						setTimeout(function(){
-							beforeScrollTop = 0;
-							isAnimatting = false;
-						},500);
-					};
-				}else{
-					lastEndScrollTop = scrollTop;
-				}
-			},300);
+			// setTimeout(function(){
+			// 	if(lastEndScrollTop == scrollTop){ // 判断一次滚动是否结束，结束后开始计算后续工作;200 毫秒内没有变化，则认定为滚动停止
+			// 		// scrollTop > beforeScrollTop 为向下滚动 scrollTop < beforeScrollTop 为向上滚动
+			// 		if(scrollTop > beforeScrollTop && scrollTop <= smallProgramTop && !isAnimatting){
+			// 			isAnimatting = true;
+			// 			$("html,body").animate({
+			// 				'scrollTop':smallProgramTop,
+			// 			},300);
+			// 			setTimeout(function(){
+			// 				beforeScrollTop = smallProgramTop;
+			// 				isAnimatting = false;
+			// 			},500);
+			// 		}else if(scrollTop < beforeScrollTop && scrollTop < smallProgramTop - 50  && !isAnimatting){
+			// 			isAnimatting = true;
+			// 			$("html,body").animate({
+			// 				'scrollTop':0,
+			// 			},300);
+			// 			setTimeout(function(){
+			// 				beforeScrollTop = 0;
+			// 				isAnimatting = false;
+			// 			},500);
+			// 		};
+			// 	}else{
+			// 		lastEndScrollTop = scrollTop;
+			// 	}
+			// },300);
 			
 			// $('#scroo').html(scrollTop)
 			// 文字 title 渐进显示：
@@ -1045,16 +1048,37 @@ img{
 				setIeStyle();
 			};
 			setToolTabMargin();  
-			
+			setBannerImgHeight();
+			setChromiumTitleMargin();
+		};
+		
+		// 设置 banner 和第二屏方图的大小
+		function setBannerImgHeight(){
 			// 保持第一屏和第二屏里图片大小相同
 			var toolContentW = $('.toolContent').width();
-			var toolContentH = $('.toolContent').height();
+			$('.toolContent').css({
+				height:(538 / 958) * toolContentW + 'px'
+			});
 			$('.bannerImg').css({
 				width:toolContentW,
-				height:toolContentH,
+				height:(538 / 958) * toolContentW + 'px',
 			})
-			
 		};
+		setBannerImgHeight();
+		
+		// 设置第三屏内核文字距离顶部的距离
+		function setChromiumTitleMargin(){
+			var chromiumBoxContentH = $('.chromiumBoxContent').height();
+			console.log(chromiumBoxContentH)
+			$('.chromiumTitle').css({
+				'margin-top':(336 / 768) * chromiumBoxContentH + 'px',
+			});
+			$('.chromiumTabs').css({
+				'margin-top':(70 / 768) * chromiumBoxContentH + 'px',
+			})
+		};
+		setChromiumTitleMargin();
+		
 		// 计算 第二屏小程序切换 tab 之间的间距
 		function setToolTabMargin(){
 			var toolTabsWidth = $('.toolTabs').width();
@@ -1071,9 +1095,10 @@ img{
 			$('.swiper-container').css({
 				height:(509 / 986) * winHeight,
 			});
+			var slideW = (900 / 1920) * winWidth;
 			$('.swiper-container .swiper-wrapper .swiper-slide').css({
-				width:(900 / 1920) * winWidth,
-				height:(509 / 986) * winHeight,
+				width:slideW + 'px',
+				height:(509 / 900) * slideW + 'px',
 			});
 		};
 		
