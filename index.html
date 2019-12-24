@@ -841,6 +841,12 @@ img{
 			$('.screenHeight').css({				// 设置 100% 高度， === 100vh
 				'height':winHeight,
 			});
+			if(winHeight < 800){						// 屏幕分辨率高度太小时，让高度 auto，不再限制为一屏高度
+				$('.screenHeight').css({				
+					'height':'auto',
+					'min-height':winHeight,
+				});
+			};
 			$('.stickyTwoScreen').css({			// IE 不支持 sticky 粘性定位，所以设为一倍屏高，自由滑动即可
 				'height':winHeight,
 			});
