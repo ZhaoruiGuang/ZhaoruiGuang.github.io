@@ -1,887 +1,128 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-        <title>新型肺炎确诊患者相同行程查询</title>
-        <link rel="stylesheet" href="https://www.layuicdn.com/layui/css/layui.css">
-        <style>
-    		body{
-				padding-bottom: 80px;
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+		<title>吕胖胖新婚快乐</title>
+		<style type="text/css">
+			html,body{
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+				width: 100%;
+				height: 100%;
 			}
-			.site-title {
-      margin: 30px 0 20px;
-	  padding:0 10px;
-    }
-
-    .site-title fieldset {
-      border: none;
-      padding: 0;
-    }
-
-    .site-title fieldset legend {
-      margin-left: 20px;
-      padding: 0 10px;
-      font-size: 24px;
-      font-weight: bold;
-	  color: #222;
-    }
-
-    .source-link {
-      text-decoration: underline;
-    }
-
-    .layui-input-wide {
-      width: -moz-calc(100% - 50px);
-      width: -webkit-calc(100% - 50px);
-      width: calc(100% - 50px);
-    }
-	
-	.layui-btn{
-		background-color: #159688;
-		width: 94px;
-		height: 40px;
-		font-size: 18px;
-		border-radius: 20px;
-	}
-	.layui-btn:hover{
-		background-color: #18a898;
-	}
-	.layui-btn:active{
-		background-color: #128073;
-	}
-	.topLogo{
-		display: block;
-		margin: 30px auto 0;
-	}
-	.btnBox{
-		text-align: center;
-	}
-	.searchNullTip{
-		font-size: 15px;
-		line-height: 20px;
-		text-align: center;
-		color: red;
-		display: none;
-	}
-	.btns{
-		display: inline-block;
-		width: auto;
-		height: 40px;
-		padding: 0 15px;
-		text-align: center;
-		font-size: 18px;
-		line-height: 40px;
-		border-radius: 20px;
-		cursor: pointer;
-	}
-	.shareBtn{
-		background-color: #159688;
-		color: #fff;
-		margin:5px auto 10px;
-	}
-	.shareBtn:hover{
-		background-color: #18a898;
-	}
-	.shareBtn:active{
-		background-color: #128073;
-	}
-	.shareDes{
-		padding: 0 20px;
-		text-align: center;
-		font-size: 14px;
-		color: #999;
-	}
-	.reBtn{
-		position: fixed;
-		z-index: 149;
-		bottom: 25px;
-		left: 50%;
-		margin-left: -72px;
-		background-color: #fff;
-		border: 1px solid #159688;
-		color: #118073;
-		text-decoration: none;
-	}
-	.reBtn:hover{
-		background-color: #e8f5fb;
-	}
-	.reBtn:active{
-		color: #0c6359;
-		background-color: #bbe2f3;
-	}
-	.wxShareMeng{
-		position: fixed;
-		width: 100%;
-		height: 100%;
-		top: 0;
-		left: 0;
-		background-color: rgba(0,0,0,0.7);
-		z-index: 150;
-		display: none;
-	}
-	.wxShareMeng img{
-		width: 200px;
-		position: fixed;
-		left: 50%;
-		top:20px;
-		margin-left: -80px;
-	}
-	.layui-tab{
-		margin: 24px 0;
-	}
-	.partnersTitle{
-		font-size: 16px;
-		font-weight: bold;
-		padding-left: 10px;
-		margin-top: 40px;
-	}
-	.partners{
-		margin: 10px auto 0;
-	}
-	.partners img{
-		display: inline-block;
-		width: 228px
-		height: 114px;
-		float: left;
-		margin: 0 12px 24px;
-	}
-	.pcShow{
-		display: inline-block;
-	}
-	.h5Show{
-		display: none;
-	}
-	.layui-table td, .layui-table th{
-		font-size: 16px;
-	}
-	.layui-form-label{
-		font-size: 16px;
-	}
-	.layui-tab-title li{
-		font-size: 16px;
-	}
-	.site-title{
-		line-height: 26px;
-		font-size: 16px;
-	}
-	@media screen and (max-width:700px){
-		.h5Show{
-			display: inline-block;
-		}
-		.pcShow{
-			display: none;
-		}
-		.site-title fieldset{
-			text-align: center;
-		}
-		.layui-form-item .layui-input-inline{
-			margin-left: 0 !important;
-			height: 40px;
-			position: relative;
-			left: 0;
-			top: 0;
-		}
-	   .layui-btn{
-			width: 144px;
-			position: absolute;
-			left: 50%;
-			margin-left: -72px;
-	   }
-	   .h5shareworld{
-		   background-color: none;
-		   height: auto;
-	   }
-	   .layui-table-page .layui-laypage .layui-laypage-count,
-	   .layui-table-page .layui-laypage .layui-laypage-limits{
-	      display: none !important;
-	    }
-		.partners{
-			width: 90%;
-		}
-		.partners img{
-			width: 30%;
-			height: auto;
-			margin: 0 0 5%;
-		}
-		.partners .midImg{  
-			margin: 0 5% 5%;
-		}
-		
-		/* H5 表头修改 */
-		.layui-tab-card{
-			border-top: none;
-		}
-		.layui-tab-card>.layui-tab-title{
-			width: 100%;
-			height: auto;
-			overflow: auto;
-			background-color: #fff !important;
-			border: none;
-		}
-		.layui-tab-card>.layui-tab-title li{
-			height: 36px;
-			line-height: 36px;
-			border-radius: 20px;
-			background-color: #fff;
-			margin: 0 5px 10px;
-			padding: 0 8px;
-			float: left;
-			background-color:#f2f2f2;
-			color: #222;
-		}
-		.layui-tab-card > .layui-tab-title .layui-this{
-			background-color: red;
-			color: #fff;
-		}
-		.layui-tab-title .layui-this:after{
-			border:none;
-		}
-		.layui-tab-content{
-			padding:0 10px 10px;
-		}
-	}
-	
-	
-  </style>
+			a,div,span{
+				box-sizing: border-box;
+			}
+			#littleImg{
+				width: 10px;
+				height: 10px;
+				position: fixed;
+				top: 50%;
+				left: 50%;
+				margin-left: -5px;
+				margin-top: -5px;
+			}
+			#lvzishu{
+				width: 100%;
+				height: 100%;
+				background-image: url('https://p1.ssl.qhimg.com/t0114667140f3079df2.jpg');
+				background-repeat: no-repeat;
+				background-size: cover;
+				display: none;
+			}
+			.inlineBlock{
+				display: inline-block;
+			}
+			.word{
+				position: fixed;
+				opacity: 0;
+				font-size: 48px;
+				color: red;
+			}
+			@keyframes topDiao{
+				1%   {top:0;  opacity:1;}
+				50%  {top:54%;opacity:1;}
+				75%  {top:46%;opacity:1;}
+				100% {top:50%;opacity:1;}
+			}
+			@keyframes haDiao{
+				1%   {top:0;  opacity:1;}
+				50%  {top:74%;opacity:1;}
+				75%  {top:66%;opacity:1;}
+				100% {top:70%;opacity:1;}
+			}
+			@keyframes hunDiao{
+				1%   {top:0;  opacity:1;}
+				50%  {top:19%;opacity:1;}
+				75%  {top:10%;opacity:1;}
+				100% {top:12%;opacity:1;}
+			}
+			.jingWord,
+			.yiWord{
+				width: 50px;
+				height: 278px;
+				margin-top: -100px;
+			}
+			.jingWord{
+				left: 6%;
+				animation-name: topDiao;
+				animation-timing-function:ease-out;
+				animation-duration: 0.5s;
+				animation-delay:2s;
+				animation-iteration-count: 1;
+				animation-fill-mode:forwards;
+			}
+			.yiWord{
+				right: 6%;
+				animation-name: topDiao;
+				animation-timing-function:ease-out;
+				animation-duration: 0.5s;
+				animation-delay:3s;
+				animation-iteration-count: 1;
+				animation-fill-mode:forwards;
+			}
+			.haWord,
+			.hunWord{
+				display: block;
+				width: 100%;
+				height: 50px;
+				text-align: center;
+				left: 0;
+			}
+			.haWord{
+				animation-name: haDiao;
+				animation-timing-function:ease-out;
+				animation-duration: 0.5s;
+				animation-delay:4s;
+				animation-iteration-count: 1;
+				animation-fill-mode:forwards;
+			}
+			.hunWord{
+				animation-name: hunDiao;
+				animation-timing-function:ease-out;
+				animation-duration: 0.5s;
+				animation-delay:5s;
+				animation-iteration-count: 1;
+				animation-fill-mode:forwards;
+			}
+		</style>
 	</head>
-
-	<body id="body">
-		<form class="layui-form">
-			<img class="topLogo" src="https://p4.ssl.qhimg.com/t01a9e31e91f5b7997b.png" alt="">
-			<div class="site-title">
-				<fieldset>
-					<legend>2019-nCoV 新型肺炎确诊患者相同行程查询工具</legend>
-				</fieldset>
-			</div>
-			<div class="layui-form-item">
-				<label class="layui-form-label">日期：</label>
-				<div class="layui-input-block">
-					<input type="date"  id="time" name="time"  value="2018-04-26" />
-
-				</div>
-			</div>
-			<div class="layui-form-item">
-				<label class="layui-form-label">车次：</label>
-				<div class="layui-input-block">
-					<input type="text" class="layui-input layui-input-wide" name="t_no" placeholder="车次或航班，例如：T123 或 AC1111">
-				</div>
-			</div>
-			<div class="layui-form-item">
-				<label class="layui-form-label">地区：</label>
-				<div class="layui-input-block">
-					<input type="text" class="layui-input layui-input-wide" name="t_area" placeholder="可不填，例如：成都 或 四川">
-
-				</div>
-			</div>
-			<div class="layui-form-item">
-				<label class="layui-form-label"></label>
-				<div class="layui-input-inline">
-					<button class="layui-btn" lay-submit lay-filter="search">查 询</button>
-				</div>
-			</div>
-		</form>
-		<div class="btnBox">
-			<p class="searchNullTip">您所查询的车次暂未发现感染人员！</p>
-			<span class="btns shareBtn pcShow" id="shareBtn">分享以下车次，寻找同行者</span>
-			<p class="btns h5shareworld h5Show">分享以下车次，寻找同行者</p>
-			<!-- <a class="btns" id="reBtn" href="" target="_blank">抗击肺炎实时热点</a> -->
-			<p class="shareDes">以下车次发现有新型冠状病毒患者，您的每次扩散都可能减少一次疫情传播，车次持续更新中...</p>
-		</div>
-		<div class="layui-tab layui-tab-card" lay-filter="chData">
-			<ul class="layui-tab-title">
-				<li class="layui-this" lay-id="0">全部</li>
-				<li lay-id="1">飞机</li>
-				<li lay-id="2">火车</li>
-				<li lay-id="3">地铁</li>
-				<li lay-id="4">长途客车/大巴</li>
-				<li lay-id="5">公交车</li>
-				<li lay-id="6">出租车</li>
-				<li lay-id="7">轮船</li>
-				<li lay-id="8">其它公共场所</li>
-			</ul>
-			<div class="layui-tab-content">
-				<div class="layui-tab-item layui-show">
-					<table id="type0"></table>
-				</div>
-				<div class="layui-tab-item layui-show">
-					<table id="type1"></table>
-				</div>
-				<div class="layui-tab-item">
-					<table id="type2"></table>
-				</div>
-				<div class="layui-tab-item">
-					<table id="type3"></table>
-				</div>
-				<div class="layui-tab-item">
-					<table id="type4"></table>
-				</div>
-				<div class="layui-tab-item">
-					<table id="type5"></table>
-				</div>
-				<div class="layui-tab-item">
-					<table id="type6"></table>
-				</div>
-				<div class="layui-tab-item">
-					<table id="type7"></table>
-				</div>
-				<div class="layui-tab-item">
-					<table id="type8"></table>
-				</div>
-			</div>
-		</div>
-		<div class="wxShareMeng" id="wxShareMeng">
-			<img src="https://p5.ssl.qhimg.com/t01047248ff61355a0d.png" alt="">
-		</div>
-		<p class="partnersTitle">&nbsp;&nbsp;&nbsp;&nbsp;合作品牌</p>
-		<div class="partners">
-			<img src="https://p0.ssl.qhimg.com/t01f0f4fda16ef6a5e6.png" alt="">
-			<img src="https://p5.ssl.qhimg.com/t0133e4ef621057a688.png" class="midImg" alt="">
-			<img src="https://p4.ssl.qhimg.com/t0188d2c4a6fd89cabd.png" alt="">
-			<img src="https://p4.ssl.qhimg.com/t01022d49f2306fb994.png" alt="">
-			<div style="clear: both;"></div>
-		</div>
-		<div class="site-title">
-			&nbsp;&nbsp;&nbsp;&nbsp;<b>特别提示：</b><br /><br />
-			&nbsp;&nbsp;&nbsp;&nbsp;1、同乘人员、可能接触人员返家后，暂不要外出，居家封闭隔离观察，如有发热症状请就近到网上公布的指定医院发热门诊救治。<br />
-			&nbsp;&nbsp;&nbsp;&nbsp;2、同乘人员、可能接触人员要第一时间到所在社区进行登记，并在所在县（市）区疾病预防控制部门取得联系。<br />
-			&nbsp;&nbsp;&nbsp;&nbsp;3、就诊过程中，要全程佩戴口罩，尽量不要乘坐公共交通工具。<br />
-			&nbsp;&nbsp;&nbsp;&nbsp;4、数据均人工搜集经确认的官方公众号/微博/网站。<br />
-			&nbsp;&nbsp;&nbsp;&nbsp;5、原始数据由无糖信息统一提供，如有错漏，请及时联系：nosugar@nosugartech.com。<br />
-			&nbsp;&nbsp;&nbsp;&nbsp;6、任何其他问题反馈：kefu@360.cn、360mp@360.cn。<br />
-			
-			<div class="btnBox">
-				<span class="btns shareBtn reBtn" id="reBtn">分享保护身边人</span>
-			</div>
+	<body>
+		<img id="littleImg" src="https://p1.ssl.qhimg.com/t0114667140f3079df2.jpg" alt="">
+		<div id="lvzishu">
+			<span class="word inlineBlock jingWord">惊不惊喜</span>
+			<span class="word inlineBlock yiWord">意不意外</span>
+			<span class="word inlineBlock haWord">哈哈哈哈～</span>
+			<span class="word inlineBlock hunWord">新婚快乐！</span>
 		</div>
 		
-		<script src="https://cdn.bootcss.com/distpicker/1.0.4/distpicker.data.min.js"></script>
-		<script src="https://www.layuicdn.com/layui/layui.js"></script>
-		<!-- <script src="https://s0.ssl.qhres.com/static/96ea59cf4c3efd20.js"></script> -->
-		<!-- <script src="https://s4.ssl.qhres.com/static/9b804e13cb7aaf2f.js"></script> -->
-		<script>
-			var gtype = 0; //当前标签页
-    var last_param = { 't_date': '', 't_no': '', 't_area': '' };
-    var tmpData = null;
-	var searchData = null;
-    var AllData = null;
-	var ifRequest = false;
-	// 发送 GIF 打点
-	function sendGif(filename, data){
-		var files = [];
-		if (Object.prototype.toString.call(filename) == '[object String]') {
-			files.push(filename);
-		} else if (Object.prototype.toString.call(filename) == '[object Array]') {
-			files = filename;
-		} else {
-			return;
-		};
-		files.forEach(function (item) {
-			var params = '';
-			if (data && typeof data == 'object') {
-				for (var k in data) {
-					params += k + '=' + data[k] + '&';
-				}
-			}
-			new Image().src = 'https://dd.browser.360.cn/static/a/' + item + '?' + params + '&from=360fenxiang' + '&' + Date.now() + Math.random().toString().replace('0.', '').substr(0, 10);
-		})
-	};
-	
-	function getRandomNum(m,n){
-	　　var num = Math.floor(Math.random()*(m - n) + n);
-		var deNum = n * 0.5;
-	   console.log('本次操作随机数：' + num)
-	   console.log('是否要打点？--' + (num < deNum))
-	   if(num < deNum){
-		   return true;
-	   };
-	　　return false;
-	};
-	// 判断终端
-	var isPc = null;
-	var pcyidong =/(iPhone|iPad|iPod|iOS|Android)/i.test(navigator.userAgent);
-	// 如果pcyidong的值为false则用户的浏览器为pc端
-	// 如果pcyidong的值为true则用户浏览器为移动端
-	if (pcyidong == false) {
-	    isPc = true;
-		document.getElementById('body').className = '';
-	}else{
-		isPc = false;
-		document.getElementById('body').className = 'h5Page';
-	};
-	window.onload = function(){
-		var randomNum = getRandomNum(1,100);
-		if(randomNum){     
-			if(isPc){
-				sendGif('1004.9225.gif');	
-			}else{
-				sendGif('1004.6899.gif');
-			}
-		}
-	};
-	var browser={
-	    versions:function(){
-	        var u = navigator.userAgent, 
-	            app = navigator.appVersion;
-	        return {
-	            trident: u.indexOf('Trident') > -1, //IE内核
-	            presto: u.indexOf('Presto') > -1, //opera内核
-	            webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
-	            gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1,//火狐内核
-	            mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
-	            ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
-	            android: u.indexOf('Android') > -1 || u.indexOf('Adr') > -1, //android终端
-	            iPhone: u.indexOf('iPhone') > -1 , //是否为iPhone或者QQHD浏览器
-	            iPad: u.indexOf('iPad') > -1, //是否iPad
-	            webApp: u.indexOf('Safari') == -1, //是否web应该程序，没有头部与底部
-	            weixin: u.indexOf('MicroMessenger') > -1, //是否微信 （2015-01-22新增）
-	            qq: u.match(/\sQQ/i) == " qq" //是否QQ
-	        };
-	    }(),
-	    language:(navigator.browserLanguage || navigator.language).toLowerCase()
-	};
-	var isWeixin = browser.versions.weixin;  // 是否在微信中
-	
-
-    //表格通用函数
-    function tablefun(_table, _type, _data) {
-      //_type 交通类型
-      //_data 表格数据
-      _table.render({
-        elem: '#type' + _type
-        , data: _data //数据
-        , page: true
-        , cols: [[ //表头
-          { field: 't_type', title: '交通类型', width: 120, sort: true, fixed: 'left', templet: '#typeTpl' }
-          , { field: 't_date', title: '日期', width: 120, sort: true }
-          , { field: 't_no', title: '车次/车牌/航班号/场所名称', width: 200, sort: true }
-          , { field: 't_no_sub', title: '车厢', width: 177 }
-          , { field: 't_pos_start', title: '出发站', width: 120, sort: true }
-          , { field: 't_pos_end', title: '到达站', width: 120, sort: true }
-          , { field: 't_memo', title: '车次附加描述', width: 200 }
-          , { field: 't_start', title: '开始时间', width: 120, templet: '#timeStartTpl' }
-          , { field: 't_end', title: '结束时间', width: 120, templet: '#timeEndTpl' }
-          , { field: 'source', title: '线索来源', width: 120, templet: '#linkTpl' }
-          , { field: 'created_at', title: '提交时间', width: 135, sort: true, templet: '#timeCreateTpl' }
-        ]],
-        text: {
-          none: '暂无官方新闻提及该行程或地点存在确诊病例，数据如有遗漏或错误，请反馈给我们！' 
-        }
-      });
-    }
-	
-	//省市关联查询
-	function RelationSearch(_s,_v){
-		var _s = _s || '';
-		var _v = _v || '';
-		var province = ChineseDistricts[86];
-		var regstr = '';
-		for(var i in province){
-			if(province[i].indexOf(_s)>-1){
-				for(var j in ChineseDistricts[i]){
-					regstr += ChineseDistricts[i][j].replace(/(市|自治州)$/,'') + '|';
-				}
-			}
-		}
-		regstr = '(' + _s + (regstr!=''?'|':')') + regstr.replace(/\|$/,')');
-		var re = new RegExp(regstr);
-		if(re.test(_v)) console.log(_v + ':' + re.test(_v));
-		return re.test(_v);
-	}
-
-    //layui通用模块
-    layui.use(['table', "form", 'element', 'laydate', 'jquery'], function () {
-		
-		if(isWeixin){
-			// 默认分享配置
-			var shareInfo = {
-				link: 'https://browser.360.cn/2019ncov/index.html?from=360fenxiang',
-				title: '新型肺炎确诊患者同乘查询工具来啦！',
-				imgUrl: 'https://p3.ssl.qhimg.com/t019456fc771dc7fde9.png',
-				desc: '持续更新中，360助您平安。'
-			}
-			
-			// 加载微信js
-			loadWxJssdk();
-			
-			function loadWxJssdk() {
-				var ua = window.navigator.userAgent.toLowerCase();
-				//通过正则表达式匹配ua中是否含有MicroMessenger字符串
-				if (ua.indexOf('micromessenger') < 0) {
-					return false;
-				}
-				var script = document.createElement("script");
-				script.setAttribute("type", "text/javascript");
-				script.setAttribute("src", "https://s0.ssl.qhres.com/static/75ae390c7d998d54.js");
-				document.body.appendChild(script);
-				var _this = this;
-				script.onload = script.onreadystatechange = function () {
-					if (!_this.readyState || _this.readyState === 'loaded' || _this.readyState === 'complete') {
-						getWxConfig();
-					}
-				}
-			}
-			
-			function setWxConfig(conf, bool) {
-				var info = {};
-				if (conf) {
-					info = conf;
-				} else {
-					info = shareInfo;
-				}
-				var config = {
-					title: info.title,
-					link: info.link,
-					imgUrl: info.imgUrl,
-					desc: info.desc,
-					success: function () {
-						// if (bool) {
-						// 	console.log('1.4设置成功')
-						// } else {
-						// 	console.log('分享成功！', true);
-						// }
-					}
-				};
-				wx.ready(function () { //需在用户可能点击分享按钮前就先调用
-					var apis = [];
-					if (bool) {
-						apis = ['updateAppMessageShareData', 'updateTimelineShareData'];
-					} else {
-						apis = ['onMenuShareTimeline', 'onMenuShareAppMessage', 'onMenuShareQQ', 'onMenuShareQZone'];
-					}
-					apis.forEach(function (item) {
-						item in wx && wx[item](config);
-					});
-				});
-			}
-			
-			function getWxConfig() {
-				var url = 'https://mpadmin.browser.360.cn/mpadmin/open/wechatShare?url=' + encodeURIComponent(location.href);
-				$.ajax({
-					url: url,
-					type: "get",
-					dataType: "json",
-					timeout: 3000,
-					data: {},
-					success: function(res) {
-						// console.log(res);
-						if (res.errno === 0) {
-							var config = res.data;
-							wx.config({
-								debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
-								appId: config.appId, // 必填，公众号的唯一标识
-								timestamp: config.timestamp, // 必填，生成签名的时间戳
-								nonceStr: config.nonceStr, // 必填，生成签名的随机串
-								signature: config.signature, // 必填，签名
-								jsApiList: [ // 必填，需要使用的JS接口列表
-									'onMenuShareTimeline',
-									'onMenuShareAppMessage',
-									'onMenuShareQQ',
-									'onMenuShareQZone',
-									'updateAppMessageShareData',
-									'updateTimelineShareData'
-								],
-							});
-							setWxConfig();
-						} else {
-							// console.error('jssdk接口调用失败：', res.res.message);
-						}
-					}
-				});
-			}
-		}
-		
-		
-		
-      var element = layui.element;
-      var table = layui.table;
-      var laydate = layui.laydate;
-      var form = layui.form;
-      var $ = layui.jquery;
-
-      //日期控件
-      laydate.render({
-        elem: '#t_date'
-      });
-
-      //标签切换
-      element.on('tab(chData)', function () {
-        gtype = this.getAttribute('lay-id');
-        tmpData = [];
-        for (i in AllData) {
-          var flag = true;
-          if (gtype > 0) {
-            flag &= AllData[i].t_type == gtype;
-          }
-		  if(searchData&&searchData.length){
-			  if (last_param['t_date'] != '') {
-				flag &= AllData[i].t_date == last_param['t_date'];
-			  }
-			  if (last_param['t_no'] != '') {
-				flag &= (AllData[i].t_no||"").toLowerCase().indexOf(last_param['t_no'].toLowerCase()) > -1;
-			  }
-			  if (last_param['t_area'] != '') {
-				var t_area = last_param['t_area'].toLowerCase();
-				var t_no = (AllData[i].t_no || "").toLowerCase();
-				var t_pos_start = AllData[i].t_pos_start;
-				var t_pos_end = AllData[i].t_pos_end;
-				var t_memo = AllData[i].t_memo;
-				flag &= RelationSearch(t_area,t_no) || RelationSearch(t_area,t_pos_start) || RelationSearch(t_area,t_pos_end) || RelationSearch(t_area,t_memo);
-			  }
-		  }
-          if (flag) tmpData.push(AllData[i]);
-        }
-        tablefun(table, gtype, tmpData);
-      });
-
-      //搜索功能
-      form.on("submit(search)", function (data) {
-		sessionStorage.setItem("searchType", "1");
-		var randomNum = getRandomNum(1,100);
-		if(randomNum){
-			if(isPc){
-				sendGif('1004.4221.gif');	
-			}else{
-				sendGif('1004.9544.gif');
-			}
-		}
-		if(!ifRequest){
-			getData()  // 搜索时，先请求所有数据，再筛选
-			.done(function(res){
-				ifRequest = true;
-				console.log('搜索')
-				last_param = data.field;
-				tmpData = [];
-				for (i in AllData) {
-				  var flag = true;
-				  if (gtype > 0) {
-				    flag &= AllData[i].t_type == gtype;
-				  }
-				  if (last_param['t_date'] != '') {
-				    flag &= AllData[i].t_date == last_param['t_date'];
-				  }
-				  if (last_param['t_no'] != '') {
-				    flag &= (AllData[i].t_no||"").toLowerCase().indexOf(last_param['t_no'].toLowerCase()) > -1;
-				  }
-				  if (last_param['t_area'] != '') {
-				    var t_area = last_param['t_area'].toLowerCase();
-					var t_no = (AllData[i].t_no || "").toLowerCase();
-					var t_pos_start = AllData[i].t_pos_start;
-					var t_pos_end = AllData[i].t_pos_end;
-					var t_memo = AllData[i].t_memo;
-					flag &= RelationSearch(t_area,t_no) || RelationSearch(t_area,t_pos_start) || RelationSearch(t_area,t_pos_end) || RelationSearch(t_area,t_memo);
-				  }
-				  if (flag) tmpData.push(AllData[i]);
-				}
-				// 如果筛选有结果，就展示筛选的，没有结果，就展示全部的
-				console.log(tmpData)
-				console.log(AllData)
-				if(tmpData.length){
-					$('.searchNullTip').hide();
-					tablefun(table, gtype, tmpData);
-					sendGif('1004.4574.gif'); // 查询有结果
-				}else{
-					$('.searchNullTip').show();
-					tablefun(table, gtype, AllData);
-					sendGif('1004.546.gif'); // 查询无结果
-				}
-				
-			}).fail(function(err){
-					sendGif('1004.546.gif'); // 查询无结果
-			});
-		}else{
-			last_param = data.field;
-			tmpData = [];
-			for (i in AllData) {
-			  var flag = true;
-			  if (gtype > 0) {
-			    flag &= AllData[i].t_type == gtype;
-			  }
-			  if (last_param['t_date'] != '') {
-			    flag &= AllData[i].t_date == last_param['t_date'];
-			  }
-			  if (last_param['t_no'] != '') {
-			    flag &= (AllData[i].t_no||"").toLowerCase().indexOf(last_param['t_no'].toLowerCase()) > -1;
-			  }
-			  if (last_param['t_area'] != '') {
-			    var t_area = last_param['t_area'].toLowerCase();
-				var t_no = (AllData[i].t_no || "").toLowerCase();
-				var t_pos_start = AllData[i].t_pos_start;
-				var t_pos_end = AllData[i].t_pos_end;
-				var t_memo = AllData[i].t_memo;
-				flag &= RelationSearch(t_area,t_no) || RelationSearch(t_area,t_pos_start) || RelationSearch(t_area,t_pos_end) || RelationSearch(t_area,t_memo);
-			  }
-			  if (flag) tmpData.push(AllData[i]);
-			}
-			// 如果筛选有结果，就展示筛选的，没有结果，就展示全部的
-			console.log(tmpData)
-			console.log(AllData)
-			if(tmpData.length){
-				$('.searchNullTip').hide();
-				tablefun(table, gtype, tmpData);
-				sendGif('1004.4574.gif'); // 查询有结果
-			}else{
-				$('.searchNullTip').show();
-				tablefun(table, gtype, AllData);
-				sendGif('1004.546.gif'); // 查询无结果
-			}
-		}
-		searchData = tmpData;
-		
-		return false;
-        
-      });
-	  
-	  // $.getJSON("/data.json?"+Math.floor(new Date().getTime()/1000/3600), function (result) {
-	  //   AllData = result.data;
-	  //   //页面初次载入，表格初始化
-	  //   tablefun(table, gtype, AllData);
-	  // });
-      getData(1)  // 初次加载，只请求一页数据
-	  .done(function(res){
-		  if(AllData&&AllData.length){
-			tablefun(table, gtype, AllData);  
-		  }
-	  }).fail(function(err){
-		  
-	  })
-	  
-	  // 获取数据接口
-	  function getData(pageNo){
-	  	console.log('getData now')
-	  	var def = $.Deferred();
-	  	
-	  	var searchType = sessionStorage.getItem("searchType");
-	  	var data = {
-	  		time:Math.floor(new Date().getTime()/1000/3600),
-	  		cb:'callack'
-	  	};
-	  	if(pageNo && searchType != 1){
-	  		data.page = pageNo;
-	  	};
-	  	
-	  	$.ajax({
-	  		url: '//uapi.mp.360.cn/mp/ncov',
-	  		// url: './mock_data.html',
-	  		dataType: 'JSONP',
-	  		data:data,
-	  		jsonpCallback: 'callack',
-	  		timeout:3000,
-	  	}).done(function(res){
-	  		console.log('get data success');
-	  		AllData = res.data&&res.data || [];
-	  		console.log(AllData)
-	  		sessionStorage.removeItem("searchType");
-	  		def.resolve(res);
-	  	}).fail(function(xhr){
-	  		console.log('get data fail');
-	  		sessionStorage.removeItem("searchType");
-	  	});
-	  	
-	  	return def;	
-	  }
-	  
-	  // 分享按钮
-	  $('.shareBtn').click(function(){
-	  	var randomNum = getRandomNum(1,100);
-	  	if(randomNum){
-	  		if(isPc){
-	  			sendGif('1004.7111.gif');	
-	  		}else{
-	  			sendGif('1004.5213.gif');
-	  		}
-	  	}
-	  	
-	  	
-	  	if(isWeixin){
-	  		$('#wxShareMeng').show();
-	  	}else{
-	  		var shareUrl = 'https://browser.360.cn/2019ncov/index.html?from=360fenxiang';
-	  		var oInput = document.createElement('input');
-	  		oInput.value = shareUrl;
-	  		document.body.appendChild(oInput);
-	  		oInput.select(); // 选择对象
-	  		document.execCommand("Copy"); // 执行浏览器复制命令
-	  		oInput.className = 'oInput';
-	  		oInput.style.display='none';
-			layer.open({
-			  type: 0, 
-			  content: '分享链接已复制，分享给您的朋友一起查询吧' ,//这里content是一个普通的String
-			  shade:0,
-			  title:false,
-			  tips:3,
-			  closeBtn:0,
-			});
-	  		//alert('分享链接已复制，分享给您的朋友一起查询吧');
-	  	}
-	  });
-	  // 点击微信分享箭头蒙层，蒙层消失
-	  $('#wxShareMeng').click(function(){
-	  	$('#wxShareMeng').hide();
-	  });
-	  
-	  var hh = $(window).height();
-	  $(window).resize(function() {
-	  		if($(window).height()<hh){
-	  			$('#reBtn').css("display","none");
-	  		}else{
-	  			$('#reBtn').css("display","block");
-	  		}
-	  });
-	  
-    });
-	
-	
-
-  </script>
-		<!--交通类型模板-->
-		<script type="text/html" id="typeTpl">
-			{{#  if(d.t_type == 1){ }}
-        飞机
-    {{#  } else if(d.t_type == 2) { }}
-        火车
-    {{#  } else if(d.t_type == 3) { }}
-        地铁
-    {{#  } else if(d.t_type == 4) { }}
-        长途客车/大巴
-    {{#  } else if(d.t_type == 5) { }}
-        公交车
-    {{#  } else if(d.t_type == 6) { }}
-        出租车
-    {{#  } else if(d.t_type == 7) { }}
-        轮船
-    {{#  } else if(d.t_type == 8) { }}
-        其它公共场所
-    {{#  } }}
-</script>
-		<script type="text/html" id="timeStartTpl">
-			{{ new Date(d.t_start).toLocaleString() }}
-</script>
-		<script type="text/html" id="timeEndTpl">
-			{{ new Date(d.t_end).toLocaleString() }}
-</script>
-		<script type="text/html" id="timeCreateTpl">
-			{{ new Date(d.created_at).toLocaleString() }}
-</script>
-		<script type="text/html" id="linkTpl">
-			<a class="source-link" target="_blank" href="{{d.source}}">{{d.who}}</a>
-</script>
-		<!-- <script>
-			var _hmt = _hmt || [];
-			(function () {
-			  var hm = document.createElement("script");
-			  hm.src = "https://hm.baidu.com/hm.js?bbf4d3a9d126b5b622f9848a96bd6550";
-			  var s = document.getElementsByTagName("script")[0];
-			  s.parentNode.insertBefore(hm, s);
-			})();
-		</script> -->
-		<script>
-		(function(b,a,e,h,f,c,g,s){b[h]=b[h]||function(){(b[h].c=b[h].c||[]).push(arguments)};
-		b[h].s=!!c;g=a.getElementsByTagName(e)[0];s=a.createElement(e);
-		s.src="//s.union.360.cn/"+f+".js";s.defer=!0;s.async=!0;g.parentNode.insertBefore(s,g)
-		})(window,document,"script","_qha",317799,false);
+		<script type="text/javascript">
+			setTimeout(()=>{
+				document.getElementById('littleImg').style.display = 'none';
+				document.getElementById('lvzishu').style.display = 'block';
+			},5000)
 		</script>
-
 	</body>
-
 </html>
