@@ -15,6 +15,11 @@
 			a,div,span{
 				box-sizing: border-box;
 			}
+			@keyframes imgRotate{
+				0% {transform: rotate(0deg);}
+				50% {transform: rotate(180deg);}
+				100% {transform: rotate(360deg);}
+			}
 			#littleImg{
 				width: 10px;
 				height: 10px;
@@ -23,6 +28,7 @@
 				left: 50%;
 				margin-left: -5px;
 				margin-top: -5px;
+				animation: imgRotate 2s linear infinite;
 			}
 			#lvzishu{
 				width: 100%;
