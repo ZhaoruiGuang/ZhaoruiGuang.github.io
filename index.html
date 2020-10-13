@@ -1,135 +1,27 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
-		<title>吕胖胖新婚快乐</title>
-		<style type="text/css">
-			html,body{
-				margin: 0;
-				padding: 0;
-				box-sizing: border-box;
-				width: 100%;
-				height: 100%;
-			}
-			a,div,span{
-				box-sizing: border-box;
-			}
-			@keyframes imgRotate{
-				0% {transform: rotate(0deg);}
-				50% {transform: rotate(180deg);}
-				100% {transform: rotate(360deg);}
-			}
-			#littleImg{
-				width: 10px;
-				height: 10px;
-				position: fixed;
-				top: 50%;
-				left: 50%;
-				margin-left: -5px;
-				margin-top: -5px;
-				animation: imgRotate 2s linear infinite;
-			}
-			#lvzishu{
-				width: 100%;
-				height: 100%;
-				background-image: url('https://p1.ssl.qhimg.com/t0114667140f3079df2.jpg');
-				background-repeat: no-repeat;
-				background-size: cover;
-				background-position-x:13%;
-				display: none;
-			}
-			.inlineBlock{
-				display: inline-block;
-			}
-			.word{
-				position: fixed;
-				opacity: 0;
-				font-size: 48px;
-				color: red;
-			}
-			@keyframes topDiao{
-				1%   {top:0;  opacity:1;}
-				50%  {top:54%;opacity:1;}
-				75%  {top:46%;opacity:1;}
-				100% {top:50%;opacity:1;}
-			}
-			@keyframes haDiao{
-				1%   {top:0;  opacity:1;}
-				50%  {top:78%;opacity:1;}
-				75%  {top:70%;opacity:1;}
-				100% {top:74%;opacity:1;}
-			}
-			@keyframes hunDiao{
-				1%   {top:0;  opacity:1;}
-				50%  {top:19%;opacity:1;}
-				75%  {top:10%;opacity:1;}
-				100% {top:12%;opacity:1;}
-			}
-			.jingWord,
-			.yiWord{
-				width: 50px;
-				height: 278px;
-				margin-top: -100px;
-			}
-			.jingWord{
-				left: 6%;
-				animation-name: topDiao;
-				animation-timing-function:ease-out;
-				animation-duration: 0.5s;
-				animation-delay:2s;
-				animation-iteration-count: 1;
-				animation-fill-mode:forwards;
-			}
-			.yiWord{
-				right: 6%;
-				animation-name: topDiao;
-				animation-timing-function:ease-out;
-				animation-duration: 0.5s;
-				animation-delay:3s;
-				animation-iteration-count: 1;
-				animation-fill-mode:forwards;
-			}
-			.haWord,
-			.hunWord{
-				display: block;
-				width: 100%;
-				height: 50px;
-				text-align: center;
-				left: 0;
-			}
-			.haWord{
-				animation-name: haDiao;
-				animation-timing-function:ease-out;
-				animation-duration: 0.5s;
-				animation-delay:4s;
-				animation-iteration-count: 1;
-				animation-fill-mode:forwards;
-			}
-			.hunWord{
-				animation-name: hunDiao;
-				animation-timing-function:ease-out;
-				animation-duration: 0.5s;
-				animation-delay:5s;
-				animation-iteration-count: 1;
-				animation-fill-mode:forwards;
-			}
-		</style>
-	</head>
-	<body>
-		<img id="littleImg" src="https://p1.ssl.qhimg.com/t0114667140f3079df2.jpg" alt="">
-		<div id="lvzishu">
-			<span class="word inlineBlock jingWord">惊不惊喜</span>
-			<span class="word inlineBlock yiWord">意不意外</span>
-			<span class="word inlineBlock haWord">哈哈哈哈～</span>
-			<span class="word inlineBlock hunWord">新婚快乐！</span>
-		</div>
-		
-		<script type="text/javascript">
-			setTimeout(()=>{
-				document.getElementById('littleImg').style.display = 'none';
-				document.getElementById('lvzishu').style.display = 'block';
-			},5000)
-		</script>
-	</body>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+        .aaa {
+            height: 100px;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="heig">
+        <div class="aaa">
+            外页
+        </div>
+    </div>
+
+    <div>
+        <iframe id="myiframe" src="http://mini.zhilingshidai.com/tc/tips_m.html" width="100%" height="100%" scrolling="no"></iframe>
+    </div>
+</body>
+
 </html>
